@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Application sent · Life Blueprint Study</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0C0D10">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='70 30 260 140'%3E%3Cpath d='M200 100 C238 42 318 40 318 100 C318 160 238 158 200 100 C162 42 82 40 82 100 C82 160 162 158 200 100 Z' fill='none' stroke='%23F5B841' stroke-width='26'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Hanken+Grotesk:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap">
+<style>
+:root {
+  --night: #0C0D10; --night-2: #16181D; --line: #2A2D35; --text: #F4F1EA; --muted: #A6A6B0;
+  --amber: #F5B841; --on-amber: #121316;
+  --display: "Gloock", "Bodoni 72", Didot, Georgia, serif;
+  --body: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --label: "Montserrat", "Avenir Next", "Segoe UI", sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { min-height: 100%; }
+body { margin: 0; background: var(--night); color: var(--text); font-family: var(--body); font-size: 1.08rem; line-height: 1.6; overflow-x: hidden; }
+.glow { position: fixed; top: -30%; right: -20%; width: 900px; height: 900px; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle at 40% 40%, rgba(91,91,214,.45), rgba(91,91,214,0) 60%), radial-gradient(circle at 65% 65%, rgba(245,184,65,.28), rgba(245,184,65,0) 55%); }
+header { position: relative; padding: 18px 20px; border-bottom: 1px solid var(--line); }
+header a { display: inline-block; line-height: 0; }
+header svg { height: 46px; width: auto; }
+main { position: relative; max-width: 720px; margin: 0 auto; padding: 80px 20px 96px; display: grid; gap: 28px; }
+.check { width: 64px; height: 64px; border-radius: 50%; background: var(--amber); display: grid; place-items: center; }
+.check svg { width: 30px; height: 30px; fill: none; stroke: var(--on-amber); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.label { font: 700 .72rem var(--label); letter-spacing: .16em; text-transform: uppercase; color: var(--amber); margin: 0; }
+h1 { font-family: var(--display); font-weight: 400; font-size: clamp(2.6rem, 7vw, 4.4rem); line-height: 1; margin: 0; text-wrap: balance; }
+.lede { color: var(--muted); font-size: 1.2rem; margin: 0; max-width: 52ch; }
+ol { list-style: none; margin: 8px 0 0; padding: 0; border-top: 1px solid var(--line); }
+ol li { display: grid; grid-template-columns: 48px 1fr; gap: 12px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+ol li span { font-family: var(--display); font-size: 1.8rem; line-height: 1; color: var(--amber); }
+.note { color: var(--muted); font-size: .98rem; margin: 0; }
+.btn { justify-self: start; display: inline-flex; align-items: center; gap: 10px; padding: 15px 26px; border-radius: 999px; font: 700 .98rem var(--label); text-decoration: none; background: var(--amber); color: var(--on-amber); }
+.btn:hover { box-shadow: 0 10px 30px -8px rgba(245,184,65,.55); }
+:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; border-radius: 4px; }
+</style>
+</head>
+<body>
+<div class="glow" aria-hidden="true"></div>
+<header>
+  <a href="./" aria-label="Life Blueprint Study, home">
+    <svg viewBox="0 0 400 200" role="img" aria-label="Life Blueprint logo">
+      <path d="M200 100 C238 42 318 40 318 100 C318 160 238 158 200 100 C162 42 82 40 82 100 C82 160 162 158 200 100 Z" fill="none" stroke="#F4F1EA" stroke-width="30"/>
+      <path d="M200 100 C238 42 318 40 318 100 C318 160 238 158 200 100 C162 42 82 40 82 100 C82 160 162 158 200 100 Z" fill="none" stroke="#0C0D10" stroke-width="18"/>
+      <rect x="14" y="76" width="372" height="48" fill="#0C0D10"/>
+      <text x="200" y="117" text-anchor="middle" textLength="364" lengthAdjust="spacingAndGlyphs" fill="#F4F1EA" style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 46px">LIFE BLUEPRINT</text>
+    </svg>
+  </a>
+</header>
+<main>
+  <div class="check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+  <p class="label" data-t="label">Application sent</p>
+  <h1 data-t="h1">Thank you. Your first step is taken.</h1>
+  <p class="lede" data-t="lede">We've received your application. A confirmation is on its way to your inbox, and an admissions advisor will reply to you personally.</p>
+  <ol>
+    <li><span>1</span><p style="margin:0" data-t="s1">We read your application.</p></li>
+    <li><span>2</span><p style="margin:0" data-t="s2">An advisor contacts you by email to explain enrolment and answer your questions.</p></li>
+    <li><span>3</span><p style="margin:0" data-t="s3">Once enrolled, you can bring us any decision, for the rest of your life.</p></li>
+  </ol>
+  <p class="note" data-t="note">Can't find the confirmation? Check your spam folder, or write to us at lifeblueprintstudy@gmail.com</p>
+  <a class="btn" href="./" data-t="back">Back to the website</a>
+</main>
+<script>
+const DA = {
+  label: "Ansøgning sendt",
+  h1: "Tak. Du har taget det første skridt.",
+  lede: "Vi har modtaget din ansøgning. Der er en bekræftelse på vej til din indbakke, og en studievejleder vender personligt tilbage til dig.",
+  s1: "Vi læser din ansøgning.",
+  s2: "En vejleder kontakter dig på e-mail, fortæller om optagelsen og svarer på dine spørgsmål.",
+  s3: "Når du er optaget, kan du komme til os med enhver beslutning, resten af livet.",
+  note: "Kan du ikke finde bekræftelsen? Tjek dit spamfilter, eller skriv til os på lifeblueprintstudy@gmail.com",
+  back: "Tilbage til forsiden"
+};
+let lang = location.search.indexOf("da") === 1 ? "da" : (location.search.indexOf("en") === 1 ? "en" : null);
+if (!lang) { try { lang = localStorage.getItem("lb-lang"); } catch (e) {} }
+if (lang === "da") {
+  document.documentElement.lang = "da";
+  document.title = "Ansøgning sendt · Life Blueprint Study";
+  document.querySelectorAll("[data-t]").forEach(el => { if (DA[el.dataset.t]) el.textContent = DA[el.dataset.t]; });
+}
+</script>
+</body>
+</html>

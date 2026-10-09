@@ -495,7 +495,13 @@ footer svg { height: 54px; width: auto; }
         </ul>
       </div>
       <div>
-        <form class="panel" id="form" novalidate>
+        <form class="panel" id="form" novalidate method="POST" action="https://formsubmit.co/cbeebcf4e99a0dfc7fc240e7575fc691">
+          <input type="hidden" name="_subject" id="h-subject" value="New enrolment application">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" id="h-next" value="https://lifeblueprintstudy.github.io/thanks.html">
+          <input type="hidden" name="_autoresponse" id="h-auto" value="">
+          <input type="hidden" name="First subject" id="h-theme" value="">
+          <input type="hidden" name="Language" id="h-lang" value="English">
           <div class="row2">
             <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name"></div>
             <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email"></div>
@@ -504,7 +510,7 @@ footer svg { height: 54px; width: auto; }
             <div class="field"><label for="f-region">Where you live</label>
               <select id="f-region" name="region"><option value="Europe">Europe</option><option value="North America">North America</option><option value="Latin America">Latin America</option><option value="Africa">Africa</option><option value="Middle East">Middle East</option><option value="Asia">Asia</option><option value="Oceania">Oceania</option></select>
             </div>
-            <div class="field"><label for="f-theme">First subject</label><select id="f-theme" name="theme"></select></div>
+            <div class="field"><label for="f-theme">First subject</label><select id="f-theme"></select></div>
           </div>
           <div class="field"><label for="f-msg">What's on your mind? (optional)</label><textarea id="f-msg" name="message" placeholder="A few lines are enough. You can share the full picture with your tutor later."></textarea></div>
           <input type="text" name="_honey" id="f-honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
@@ -831,47 +837,27 @@ document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click
 const form = document.getElementById("form");
 const confirmBox = document.getElementById("confirm");
 const err = document.getElementById("f-err");
-const ENDPOINT = "https://formsubmit.co/ajax/cbeebcf4e99a0dfc7fc240e7575fc691";
+const AUTO = {
+  en: n => "Hi " + n + ",\n\nThank you for applying to Life Blueprint Study. We have received your application, and an admissions advisor will reply to you personally to explain enrolment and answer your questions.\n\nWhat happens next:\n1. We read your application.\n2. An advisor contacts you by email.\n3. Once enrolled, you can bring us any decision, for the rest of your life.\n\nA copy of what you sent us is included below. If you have anything to add, simply reply to this email.\n\nWarm regards,\nAdmissions\nLife Blueprint Study\nhttps://lifeblueprintstudy.github.io/",
+  da: n => "Hej " + n + ",\n\nTak for din ansøgning til Life Blueprint Study. Vi har modtaget den, og en studievejleder vender personligt tilbage til dig, fortæller om optagelsen og svarer på dine spørgsmål.\n\nSådan foregår det:\n1. Vi læser din ansøgning.\n2. En vejleder kontakter dig på e-mail.\n3. Når du er optaget, kan du komme til os med enhver beslutning, resten af livet.\n\nNedenfor finder du en kopi af det, du sendte os. Har du noget at tilføje, kan du blot svare på denne mail.\n\nVenlig hilsen\nOptagelsen\nLife Blueprint Study\nhttps://lifeblueprintstudy.github.io/"
+};
 const sendBtn = document.getElementById("f-send");
-form.addEventListener("submit", async e => {
-  e.preventDefault();
+form.addEventListener("submit", e => {
   const name = form.name.value.trim();
   const email = form.email.value.trim();
-  if (!name) { err.textContent = UI[LANG].errName; err.hidden = false; form.name.focus(); return; }
-  if (!/^\S+@\S+\.\S+$/.test(email)) { err.textContent = UI[LANG].errEmail; err.hidden = false; form.email.focus(); return; }
-  if (document.getElementById("f-honey").value) return; // bot trap
+  if (document.getElementById("f-honey").value) { e.preventDefault(); return; }
+  if (!name) { e.preventDefault(); err.textContent = UI[LANG].errName; err.hidden = false; form.name.focus(); return; }
+  if (!/^\S+@\S+\.\S+$/.test(email)) { e.preventDefault(); err.textContent = UI[LANG].errEmail; err.hidden = false; form.email.focus(); return; }
   err.hidden = true;
-  const theme = themeSel.options[themeSel.selectedIndex].textContent;
-  const label = sendBtn.innerHTML;
+  const first = name.split(" ")[0];
+  document.getElementById("h-subject").value = "New enrolment application: " + name;
+  document.getElementById("h-theme").value = THEMES.find(x => x.key === themeSel.value)?.label || "Something else";
+  document.getElementById("h-lang").value = LANG === "da" ? "Danish" : "English";
+  document.getElementById("h-auto").value = AUTO[LANG](first);
+  document.getElementById("h-next").value = "https://lifeblueprintstudy.github.io/thanks.html?" + (LANG === "da" ? "da" : "en");
+  if (!form.message.value.trim()) form.message.value = "-";
   sendBtn.disabled = true; sendBtn.textContent = UI[LANG].sending;
-  try {
-    const res = await fetch(ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "Accept": "application/json" },
-      body: JSON.stringify({
-        _subject: "New enrolment application: " + name,
-        _template: "table",
-        _replyto: email,
-        Name: name,
-        Email: email,
-        Region: form.region.value,
-        "First subject": THEMES.find(x => x.key === themeSel.value)?.label || "Something else",
-        Message: form.message.value.trim() || "(none)",
-        Language: LANG === "da" ? "Danish" : "English"
-      })
-    });
-    const data = await res.json().catch(() => ({}));
-    if (!res.ok || data.success === false || data.success === "false") throw new Error(data.message || "Send failed");
-    document.getElementById("c-title").textContent = UI[LANG].thanks(name.split(" ")[0]);
-    document.getElementById("c-body").textContent = UI[LANG].sent(email, theme);
-    form.reset(); pick("career");
-    form.hidden = true; confirmBox.hidden = false;
-  } catch (ex) {
-    err.textContent = UI[LANG].errSend;
-    err.hidden = false;
-  } finally {
-    sendBtn.disabled = false; sendBtn.innerHTML = label;
-  }
+  window.addEventListener("pageshow", () => { sendBtn.disabled = false; sendBtn.innerHTML = LANG === "da" ? "Send ansøgning <span class=\"arrow\">→</span>" : "Send application <span class=\"arrow\">→</span>"; }, { once: true });
 });
 let startLang = "en";
 try { startLang = localStorage.getItem("lb-lang") || ((navigator.language || "").toLowerCase().startsWith("da") ? "da" : "en"); } catch (e) {}
