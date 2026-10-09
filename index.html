@@ -1,0 +1,905 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Life Blueprint Study</title>
+<meta name="description" content="Life Blueprint Study is a lifetime school for life's biggest decisions. Enrol once and get private 1-to-1 tutoring whenever you reach a crossroads.">
+<meta property="og:title" content="Life Blueprint Study">
+<meta property="og:description" content="Life Blueprint Study is a lifetime school for life's biggest decisions. Enrol once and get private 1-to-1 tutoring whenever you reach a crossroads.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#E9EBE2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#4A3F60" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='70 30 260 140'%3E%3Cpath d='M200 100 C238 42 318 40 318 100 C318 160 238 158 200 100 C162 42 82 40 82 100 C82 160 162 158 200 100 Z' fill='none' stroke='%23EDB040' stroke-width='26'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@600;700;800&display=swap">
+<style>
+/* Layout: "cinematic school" — dark, glowing stage sections (the launch energy) alternate with warm paper sections (the human voice). One deliberate look, not theme-switched. */
+:root {
+  --night: #0D1210;
+  --night-2: #151C18;
+  --night-line: #27302B;
+  --light-text: #F4F1EA;
+  --night-muted: #A9B1A9;
+  --paper: #F1F1EA;
+  --paper-2: #FFFFFF;
+  --ink: #141815;
+  --muted: #586058;
+  --line: #DADBD0;
+  --amber: #EDB040;
+  --indigo: #3F7A55;
+  --on-amber: #141815;
+  --green: #2F6B4A;
+  --moss: #8DB07A;
+  --display: "Gloock", "Bodoni 72", Didot, Georgia, serif;
+  --body: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --label: "Montserrat", "Avenir Next", "Segoe UI", sans-serif;
+  --r: 14px;
+  --header-bg: rgba(13,18,16,.86);
+  --tag-bg: #E3EEE5;
+  --tag-fg: #2C5E41;
+  --err: #B3261E;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) { --night: #E9EBE2; --night-2: #F7F8F3; --night-line: #D3D7CA; --light-text: #141815; --night-muted: #586058; --amber: #9A6A0E; --on-amber: #FFFFFF; --moss: #3F7A55; --header-bg: rgba(233,235,226,.88); --err: #B3261E; color-scheme: light; } }
+:root[data-theme="light"] { --night: #E9EBE2; --night-2: #F7F8F3; --night-line: #D3D7CA; --light-text: #141815; --night-muted: #586058; --amber: #9A6A0E; --on-amber: #FFFFFF; --moss: #3F7A55; --header-bg: rgba(233,235,226,.88); --err: #B3261E; color-scheme: light; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --night: #2F4A57; --night-2: rgba(255,248,234,.09); --night-line: rgba(255,248,234,.2); --light-text: #FFFBF2; --night-muted: #E6E0D0; --paper: #34504A; --paper-2: rgba(255,248,234,.1); --ink: #FFFBF2; --muted: #E6E0D0; --line: rgba(255,248,234,.2); --amber: #F2C26A; --moss: #B9DCA4; --green: #3F7F5A; --indigo: #B9DCA4; --header-bg: rgba(66,56,90,.72); --tag-bg: rgba(185,220,164,.22); --tag-fg: #E4F2D8; --err: #FFB8AA; --glow-o: .3; --t-hero: rgba(78,62,112,.55); --t-strip: rgba(28,26,44,.55); --t-philo: rgba(46,98,70,.62); --t-how: rgba(36,96,104,.62); --t-toolkit: rgba(40,70,116,.62); --t-tutor: rgba(120,72,50,.6); --t-benefits: rgba(82,106,50,.62); --t-tracks: rgba(98,62,116,.6); --t-faq: rgba(42,86,124,.62); --t-apply: rgba(124,86,36,.58); --t-foot: rgba(34,30,52,.72); --flush-pad: clamp(64px, 8vw, 96px); --sec-dark: transparent; --sec-light: rgba(255,248,234,.04); --ambient: radial-gradient(55% 20% at 8% 2%, rgba(201,138,170,.42), transparent 70%), radial-gradient(50% 18% at 94% 8%, rgba(240,178,96,.40), transparent 70%), radial-gradient(60% 22% at 4% 22%, rgba(110,186,128,.40), transparent 70%), radial-gradient(50% 20% at 96% 32%, rgba(96,170,210,.42), transparent 70%), radial-gradient(55% 20% at 10% 46%, rgba(80,170,160,.40), transparent 70%), radial-gradient(50% 18% at 92% 56%, rgba(226,130,82,.38), transparent 70%), radial-gradient(55% 20% at 6% 68%, rgba(190,200,110,.34), transparent 70%), radial-gradient(50% 18% at 94% 80%, rgba(160,128,200,.40), transparent 70%), radial-gradient(60% 20% at 14% 96%, rgba(96,170,210,.36), transparent 70%), linear-gradient(180deg, #4A3F60 0%, #3B5B4F 22%, #375A6E 44%, #5A4A3A 66%, #4A5E3E 84%, #4B4466 100%); color-scheme: dark; } }
+:root[data-theme="dark"] { --night: #2F4A57; --night-2: rgba(255,248,234,.09); --night-line: rgba(255,248,234,.2); --light-text: #FFFBF2; --night-muted: #E6E0D0; --paper: #34504A; --paper-2: rgba(255,248,234,.1); --ink: #FFFBF2; --muted: #E6E0D0; --line: rgba(255,248,234,.2); --amber: #F2C26A; --moss: #B9DCA4; --green: #3F7F5A; --indigo: #B9DCA4; --header-bg: rgba(66,56,90,.72); --tag-bg: rgba(185,220,164,.22); --tag-fg: #E4F2D8; --err: #FFB8AA; --glow-o: .3; --t-hero: rgba(78,62,112,.55); --t-strip: rgba(28,26,44,.55); --t-philo: rgba(46,98,70,.62); --t-how: rgba(36,96,104,.62); --t-toolkit: rgba(40,70,116,.62); --t-tutor: rgba(120,72,50,.6); --t-benefits: rgba(82,106,50,.62); --t-tracks: rgba(98,62,116,.6); --t-faq: rgba(42,86,124,.62); --t-apply: rgba(124,86,36,.58); --t-foot: rgba(34,30,52,.72); --flush-pad: clamp(64px, 8vw, 96px); --sec-dark: transparent; --sec-light: rgba(255,248,234,.04); --ambient: radial-gradient(55% 20% at 8% 2%, rgba(201,138,170,.42), transparent 70%), radial-gradient(50% 18% at 94% 8%, rgba(240,178,96,.40), transparent 70%), radial-gradient(60% 22% at 4% 22%, rgba(110,186,128,.40), transparent 70%), radial-gradient(50% 20% at 96% 32%, rgba(96,170,210,.42), transparent 70%), radial-gradient(55% 20% at 10% 46%, rgba(80,170,160,.40), transparent 70%), radial-gradient(50% 18% at 92% 56%, rgba(226,130,82,.38), transparent 70%), radial-gradient(55% 20% at 6% 68%, rgba(190,200,110,.34), transparent 70%), radial-gradient(50% 18% at 94% 80%, rgba(160,128,200,.40), transparent 70%), radial-gradient(60% 20% at 14% 96%, rgba(96,170,210,.36), transparent 70%), linear-gradient(180deg, #4A3F60 0%, #3B5B4F 22%, #375A6E 44%, #5A4A3A 66%, #4A5E3E 84%, #4B4466 100%); color-scheme: dark; }
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--ambient, none), var(--night); color: var(--light-text); font-family: var(--body); font-size: 1.08rem; line-height: 1.6; }
+.wrap { max-width: 1160px; margin-inline: auto; padding-inline: 20px; }
+h1, h2, h3 { margin: 0; font-weight: 400; text-wrap: balance; line-height: 1.04; }
+h1, h2 { font-family: var(--display); letter-spacing: -0.01em; }
+h2 { font-size: clamp(2.1rem, 4.6vw, 3.4rem); }
+h3 { font-family: var(--body); font-weight: 600; font-size: 1.2rem; letter-spacing: -0.01em; line-height: 1.25; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; border-radius: 4px; }
+.label { font-family: var(--label); font-weight: 700; font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; }
+.amber { color: var(--amber); }
+
+/* Section skins */
+.dark { background: var(--sec-dark, var(--night)); color: var(--light-text); --sub: var(--night-muted); --rule: var(--night-line); --logo-fg: var(--light-text); --logo-bg: var(--night); }
+.light { background: var(--sec-light, var(--paper)); color: var(--ink); --sub: var(--muted); --rule: var(--line); --logo-fg: var(--ink); --logo-bg: var(--paper); }
+.sub { color: var(--sub); }
+section { padding-block: 96px; }
+.sec-head { max-width: 760px; display: grid; gap: 16px; margin-bottom: 48px; }
+.sec-head .lede { color: var(--sub); font-size: 1.15rem; max-width: 60ch; }
+
+/* Logo */
+.logo .ring-out { fill: none; stroke: var(--logo-fg); stroke-width: 30; }
+.logo .ring-in { fill: none; stroke: var(--logo-bg); stroke-width: 18; }
+.logo .band { fill: var(--logo-bg); }
+.logo .logo-ring { fill: var(--logo-fg); }
+.logo text { fill: var(--logo-fg); font-family: var(--label); font-weight: 800; font-size: 46px; }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 26px; border-radius: 999px; font: 700 .98rem var(--label); text-decoration: none; cursor: pointer; border: 1.5px solid transparent; transition: transform .18s ease, background .18s ease, box-shadow .18s ease; }
+.btn-amber { background: var(--amber); color: var(--on-amber); }
+.btn-amber:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -8px rgba(237,176,64,.55); }
+.btn-line { border-color: currentColor; color: inherit; background: transparent; }
+.btn-line:hover { transform: translateY(-2px); }
+.btn-sm { padding: 10px 18px; font-size: .85rem; }
+.btn .arrow { transition: transform .18s ease; }
+.btn:hover .arrow { transform: translateX(3px); }
+
+/* Header */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--header-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--night-line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 10px; }
+.brand { line-height: 0; }
+.brand svg { height: 46px; width: auto; }
+nav { display: flex; align-items: center; gap: 26px; }
+nav a { font: 600 .88rem var(--label); color: var(--night-muted); text-decoration: none; }
+nav a:hover { color: var(--light-text); }
+nav a.btn { color: var(--on-amber); }
+.lang { display: flex; gap: 2px; padding: 3px; border: 1px solid var(--night-line); border-radius: 999px; }
+.lang button { font: 700 .74rem var(--label); letter-spacing: .08em; padding: 6px 10px; border: 0; border-radius: 999px; background: transparent; color: var(--night-muted); cursor: pointer; }
+.lang button:hover { color: var(--light-text); }
+.lang button[aria-pressed="true"] { background: var(--light-text); color: var(--night); }
+@media (max-width: 400px) { nav { gap: 10px; } .lang button { padding: 6px 8px; } }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; padding-block: 88px 96px; }
+.glow { position: absolute; inset: -20% -10% auto auto; width: 900px; height: 900px; max-width: none; border-radius: 50%; background: radial-gradient(circle at 40% 40%, rgba(74,140,96,.45), rgba(74,140,96,0) 60%), radial-gradient(circle at 65% 65%, rgba(237,176,64,.28), rgba(237,176,64,0) 55%); pointer-events: none; opacity: var(--glow-o, 1); animation: breathe 9s ease-in-out infinite alternate; }
+@keyframes breathe { from { transform: translate(0,0) scale(1); } to { transform: translate(-40px,30px) scale(1.06); } }
+.hero-grid { position: relative; display: grid; grid-template-columns: 1.15fr .95fr; gap: 48px; align-items: center; }
+.hero-grid > * { min-width: 0; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; padding: 7px 14px; border: 1px solid var(--night-line); border-radius: 999px; background: rgba(255,255,255,.03); }
+.eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--moss); box-shadow: 0 0 12px var(--moss); }
+.hero h1 { font-size: clamp(3rem, 7.4vw, 6rem); margin-top: 26px; line-height: .98; }
+.hero h1 em { font-style: normal; color: var(--amber); }
+.hero .lede { margin-top: 26px; font-size: 1.2rem; color: var(--night-muted); max-width: 52ch; }
+.cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 36px; }
+.hero-meta { display: flex; gap: 28px; flex-wrap: wrap; margin-top: 44px; padding-top: 24px; border-top: 1px solid var(--night-line); }
+.hero-meta div { display: grid; gap: 2px; }
+.hero-meta b { font-family: var(--display); font-weight: 400; font-size: 1.6rem; }
+.hero-meta span { font-size: .85rem; color: var(--night-muted); }
+
+.stage { position: relative; }
+.stage .inf { width: 100%; height: auto; display: block; }
+.inf .o { fill: none; stroke: url(#heroGrad); stroke-width: 30; }
+.inf .i { fill: none; stroke: var(--night); stroke-width: 18; }
+.lesson-card { position: relative; margin: -40px 0 0 auto; width: min(400px, 100%); background: var(--night-2); border: 1px solid var(--night-line); border-radius: 18px; padding: 20px; display: grid; gap: 14px; box-shadow: 0 30px 60px -20px rgba(0,0,0,.7); backdrop-filter: blur(6px); }
+.lc-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.lc-top .label { color: var(--amber); font-size: .66rem; }
+.lc-top span:last-child { font-size: .8rem; color: var(--night-muted); }
+.lesson-card h3 { font-family: var(--display); font-weight: 400; font-size: 1.45rem; line-height: 1.15; }
+.lc-tutor { display: flex; align-items: center; gap: 12px; padding-top: 12px; border-top: 1px solid var(--night-line); }
+.av { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font: 800 .8rem var(--label); color: var(--on-amber); background: linear-gradient(135deg, var(--amber), #8DB07A); flex: none; }
+.lc-tutor b { display: block; font-weight: 600; font-size: .95rem; }
+.lc-tutor small { color: var(--night-muted); font-size: .82rem; }
+.lc-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: .9rem; color: var(--night-muted); }
+.lc-list li::before { content: "→"; color: var(--amber); margin-right: 8px; }
+
+/* Subject strip */
+.strip { border-block: 1px solid var(--night-line); }
+.strip .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 28px; padding-block: 22px; }
+.strip span { font-family: var(--display); font-size: 1.15rem; color: var(--night-muted); white-space: nowrap; }
+
+/* Philosophy */
+.philo { display: grid; grid-template-columns: 1.1fr .9fr; gap: 64px; align-items: center; }
+.philo > * { min-width: 0; }
+.philo blockquote { margin: 0; font-family: var(--display); font-size: clamp(2rem, 4.4vw, 3.3rem); line-height: 1.08; }
+.philo blockquote span { color: var(--indigo); }
+.philo .text { display: grid; gap: 18px; }
+.philo .text p { color: var(--muted); }
+.philo .text p.first { color: var(--ink); font-size: 1.2rem; }
+.fork { width: 100%; max-width: 360px; height: auto; }
+.fork path { fill: none; stroke: var(--ink); stroke-width: 2.5; stroke-linecap: round; }
+.fork .dot { fill: var(--amber); stroke: var(--ink); stroke-width: 2.5; }
+
+/* Steps */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.step { background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--r); padding: 30px 28px; display: grid; gap: 14px; align-content: start; min-width: 0; }
+.step .n { font-family: var(--display); font-size: 3.4rem; line-height: 1; color: var(--indigo); }
+.step p { color: var(--muted); }
+.step .tag { justify-self: start; font: 700 .68rem var(--label); letter-spacing: .12em; text-transform: uppercase; padding: 6px 10px; border-radius: 6px; background: var(--tag-bg); color: var(--tag-fg); }
+
+/* Toolkit catalogue */
+.catalog { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.class { background: var(--night-2); border: 1px solid var(--night-line); border-radius: 18px; overflow: hidden; display: grid; grid-template-rows: auto 1fr; min-width: 0; transition: transform .2s ease, border-color .2s ease; }
+.class:hover { transform: translateY(-4px); border-color: #3A463F; }
+.thumb { aspect-ratio: 16 / 9; max-width: 100%; position: relative; padding: 18px; display: flex; flex-direction: column; justify-content: space-between; }
+.thumb .chip { align-self: flex-start; font: 700 .64rem var(--label); letter-spacing: .14em; text-transform: uppercase; padding: 5px 9px; border-radius: 6px; background: rgba(13,18,16,.55); color: #F2F1EA; }
+.thumb h3 { font-family: var(--display); font-weight: 400; font-size: 1.9rem; line-height: 1.02; color: #FFFFFF; text-shadow: 0 2px 20px rgba(0,0,0,.35); }
+.class-body { padding: 20px 20px 22px; display: grid; gap: 12px; align-content: start; }
+.class-body p { color: var(--night-muted); font-size: 1rem; }
+.class-body .use { color: var(--light-text); font-size: .95rem; padding-top: 12px; border-top: 1px solid var(--night-line); }
+.class-body .use b { font: 700 .68rem var(--label); letter-spacing: .12em; text-transform: uppercase; color: var(--amber); display: block; margin-bottom: 2px; }
+.g1 { background: linear-gradient(135deg, #1E3D2C, #3F7A55 55%, #EDB040 130%); }
+.g2 { background: linear-gradient(135deg, #3A2416, #9A5A34 60%, #EDB040 140%); }
+.g3 { background: linear-gradient(135deg, #10302E, #2E7D6E 60%, #C9D98A 150%); }
+.g4 { background: linear-gradient(135deg, #2B2433, #6E5A7E 60%, #E39A5B 140%); }
+.g5 { background: linear-gradient(135deg, #16303F, #3D7491 60%, #A8D3C4 140%); }
+.g6 { background: linear-gradient(135deg, #3D2A10, #B5841E 60%, #E8D98A 130%); }
+.catalog-note { margin-top: 28px; color: var(--night-muted); }
+
+/* Matcher */
+.matcher { display: grid; grid-template-columns: 1fr 1.05fr; gap: 56px; align-items: start; }
+.matcher > * { min-width: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+.chip { font: 600 .9rem var(--label); padding: 10px 16px; border-radius: 999px; cursor: pointer; border: 1.5px solid var(--line); background: var(--paper-2); color: var(--ink); }
+.chip:hover { border-color: var(--ink); }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.tcard { background: var(--night); color: var(--light-text); border: 1px solid var(--night-line); border-radius: 20px; overflow: hidden; box-shadow: 0 30px 60px -30px rgba(18,19,22,.5); }
+.tcard-top { position: relative; padding: 26px 24px 22px; background: radial-gradient(circle at 90% 0%, rgba(74,140,96,.55), transparent 60%), radial-gradient(circle at 0% 100%, rgba(237,176,64,.25), transparent 55%), var(--night-2); display: grid; gap: 18px; }
+.tcard-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.tcard-row .label { color: var(--amber); font-size: .66rem; }
+.tcard-row span:last-child { font-size: .82rem; color: var(--night-muted); font-variant-numeric: tabular-nums; }
+.tutor { display: flex; gap: 16px; align-items: center; }
+.tutor .av { width: 60px; height: 60px; font-size: 1.05rem; }
+.tutor small { display: block; font: 700 .66rem var(--label); letter-spacing: .14em; text-transform: uppercase; color: var(--night-muted); }
+.tutor h3 { font-family: var(--display); font-weight: 400; font-size: 1.7rem; margin-top: 2px; }
+.tcard-body { padding: 22px 24px 26px; display: grid; gap: 18px; }
+.tcard-body .who { color: var(--night-muted); }
+.res-list { list-style: none; margin: 0; padding: 0; }
+.res-list li { display: grid; grid-template-columns: 96px 1fr; gap: 12px; padding: 11px 0; border-top: 1px solid var(--night-line); font-size: 1rem; }
+.res-list .kind { font: 700 .66rem var(--label); letter-spacing: .12em; text-transform: uppercase; color: var(--amber); padding-top: 4px; }
+.reading-h { font: 700 .68rem var(--label); letter-spacing: .14em; text-transform: uppercase; color: var(--night-muted); margin-bottom: 4px; }
+
+/* Benefits */
+.benefits { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--line); }
+.benefit { padding: 28px 24px 8px 0; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.benefit + .benefit { padding-left: 24px; border-left: 1px solid var(--line); }
+.benefit svg { width: 42px; height: 42px; fill: none; stroke: var(--ink); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.benefit svg .acc { stroke: var(--indigo); }
+.benefit p { color: var(--muted); font-size: 1rem; }
+
+/* Tracks */
+.tracks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.track { border: 1px solid var(--night-line); border-top: 3px solid var(--green); border-radius: 18px; padding: 30px 28px; display: grid; gap: 14px; align-content: start; min-width: 0; background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,0)); }
+.track .label { color: var(--moss); }
+.track h3 { font-family: var(--display); font-weight: 400; font-size: 1.8rem; line-height: 1.05; }
+.track ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0; }
+.track li { padding: 10px 0; border-top: 1px solid var(--night-line); color: var(--night-muted); }
+.everyone { margin-top: 28px; border-radius: 18px; padding: 28px 30px; display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: center; background: var(--green); color: #F2F1EA; }
+.everyone svg { width: 84px; height: auto; }
+.everyone svg .o { fill: none; stroke: #F2F1EA; stroke-width: 26; }
+.everyone svg .i { fill: none; stroke: var(--green); stroke-width: 14; }
+.everyone p { font-family: var(--display); font-size: clamp(1.3rem, 2.4vw, 1.75rem); line-height: 1.2; }
+
+/* FAQ */
+.faq-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 56px; }
+.faq-grid > * { min-width: 0; }
+.faq { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 16px; padding-block: 22px; font-weight: 600; font-size: 1.15rem; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-family: var(--display); font-size: 1.6rem; line-height: 1; color: var(--indigo); transition: transform .2s ease; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { color: var(--muted); padding-bottom: 22px; max-width: 62ch; }
+
+/* Apply */
+.apply-sec { position: relative; overflow: hidden; }
+.apply-sec .glow { inset: auto auto -40% -20%; }
+.apply { position: relative; display: grid; grid-template-columns: 1fr 1.05fr; gap: 56px; }
+.apply > * { min-width: 0; }
+.apply h2 { margin-top: 14px; }
+.apply .intro { margin-top: 18px; color: var(--night-muted); max-width: 46ch; }
+.checks { list-style: none; padding: 0; margin: 30px 0 0; display: grid; gap: 14px; }
+.checks li { display: grid; grid-template-columns: 26px 1fr; gap: 12px; }
+.checks li::before { content: ""; width: 22px; height: 22px; border-radius: 50%; margin-top: 3px; background: #8DB07A url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12l4 4 8-8' fill='none' stroke='%23121316' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 14px no-repeat; }
+.panel { background: var(--paper); color: var(--ink); border-radius: 20px; padding: 28px; display: grid; gap: 16px; align-content: start; border: 1px solid var(--line); }
+.field { display: grid; gap: 6px; }
+.field label { font: 700 .7rem var(--label); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.field input, .field select, .field textarea { font: 1rem var(--body); color: var(--ink); background: var(--paper-2); border: 1.5px solid var(--line); border-radius: 10px; padding: 12px 13px; width: 100%; }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--indigo); outline: none; box-shadow: 0 0 0 3px rgba(74,140,96,.18); }
+.field textarea { min-height: 110px; resize: vertical; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.row2 > * { min-width: 0; }
+.fine { font-size: .9rem; color: var(--muted); }
+.error { color: var(--err); font-size: .95rem; }
+.panel h3 { font-family: var(--display); font-weight: 400; font-size: 1.8rem; }
+
+footer { border-top: 1px solid var(--night-line); }
+footer .wrap { padding-block: 40px 52px; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; color: var(--night-muted); font-size: .92rem; }
+footer svg { height: 54px; width: auto; }
+
+@media (max-width: 980px) {
+  .catalog { grid-template-columns: repeat(2, 1fr); }
+  .benefits { grid-template-columns: repeat(2, 1fr); }
+  .benefit:nth-child(3) { padding-left: 0; border-left: 0; }
+}
+@media (max-width: 860px) {
+  .hero-grid, .philo, .matcher, .apply, .faq-grid { grid-template-columns: 1fr; gap: 40px; }
+  .steps, .tracks { grid-template-columns: 1fr; }
+  nav a:not(.btn) { display: none; }
+  section { padding-block: 64px; }
+  .hero { padding-block: 52px 64px; }
+  .lesson-card { margin-top: -24px; }
+  .fork { max-width: 260px; }
+}
+@media (max-width: 560px) {
+  .catalog, .benefits { grid-template-columns: 1fr; }
+  .benefit + .benefit { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
+  .row2 { grid-template-columns: 1fr; }
+  .everyone { grid-template-columns: 1fr; gap: 14px; padding: 24px; }
+  .brand svg { height: 38px; }
+  .res-list li { grid-template-columns: 80px 1fr; }
+  .hero-meta { gap: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .glow { animation: none; }
+  .btn, .class, .btn .arrow { transition: none; }
+}
+
+/* Section colours (dark mode sets --t-*; light mode keeps the defaults) */
+.hero { background: var(--t-hero, var(--sec-dark, var(--night))); }
+.strip { background: var(--t-strip, var(--sec-dark, var(--night))); }
+#philosophy { background: var(--t-philo, var(--sec-light, var(--paper))); }
+#how { background: var(--t-how, var(--sec-light, var(--paper))); }
+#toolkit { background: var(--t-toolkit, var(--sec-dark, var(--night))); }
+#tutor { background: var(--t-tutor, var(--sec-light, var(--paper))); }
+#benefits { background: var(--t-benefits, var(--sec-light, var(--paper))); }
+#tracks { background: var(--t-tracks, var(--sec-dark, var(--night))); }
+#faq { background: var(--t-faq, var(--sec-light, var(--paper))); }
+#apply { background: var(--t-apply, var(--sec-dark, var(--night))); }
+footer { background: var(--t-foot, var(--sec-dark, var(--night))); }
+.flush { padding-top: var(--flush-pad, 0); }
+</style>
+</head>
+<body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="inf" d="M200 100 C238 42 318 40 318 100 C318 160 238 158 200 100 C162 42 82 40 82 100 C82 160 162 158 200 100 Z"/>
+    <linearGradient id="heroGrad" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#8DB07A"/><stop offset=".5" style="stop-color: var(--light-text)"/><stop offset="1" stop-color="#EDB040"/>
+    </linearGradient>
+    <mask id="lbLogoMask" maskUnits="userSpaceOnUse" x="0" y="0" width="400" height="200">
+      <rect x="0" y="0" width="400" height="200" fill="black"/>
+      <use href="#inf" fill="none" stroke="white" stroke-width="30"/>
+      <use href="#inf" fill="none" stroke="black" stroke-width="18"/>
+      <rect x="14" y="76" width="372" height="48" fill="black"/>
+    </mask>
+    <mask id="lbRingMask" maskUnits="userSpaceOnUse" x="0" y="0" width="400" height="200">
+      <rect x="0" y="0" width="400" height="200" fill="black"/>
+      <use href="#inf" fill="none" stroke="white" stroke-width="30"/>
+      <use href="#inf" fill="none" stroke="black" stroke-width="18"/>
+    </mask>
+  </defs>
+</svg>
+
+<header class="top dark">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Life Blueprint Study, home">
+      <svg class="logo" viewBox="0 0 400 200" role="img" aria-label="Life Blueprint logo">
+        <rect class="logo-ring" x="0" y="0" width="400" height="200" mask="url(#lbLogoMask)"/>
+        <text x="200" y="117" text-anchor="middle" textLength="364" lengthAdjust="spacingAndGlyphs">LIFE BLUEPRINT</text>
+      </svg>
+    </a>
+    <nav aria-label="Main">
+      <a href="#how">How it works</a>
+      <a href="#toolkit">Toolkit</a>
+      <a href="#tutor">Faculty</a>
+      <a href="#tracks">Tracks</a>
+      <a href="#faq">FAQ</a>
+      <div class="lang" role="group" aria-label="Language"><button type="button" data-lang="da" aria-pressed="false" lang="da">DA</button><button type="button" data-lang="en" aria-pressed="false" lang="en">EN</button></div>
+      <a class="btn btn-amber btn-sm" href="#apply">Apply</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <div class="hero dark">
+    <div class="glow" aria-hidden="true"></div>
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow label"><span class="dot"></span>Enrolment open all year</span>
+        <h1>Learn to make the choices that <em>shape your life.</em></h1>
+        <p class="lede">Life Blueprint Study is a lifetime school for life's biggest decisions. Enrol once. Whenever you reach a crossroads, a personal tutor teaches you the tools to think it through and choose with confidence.</p>
+        <div class="cta-row">
+          <a class="btn btn-amber" href="#apply">Apply for enrolment <span class="arrow">→</span></a>
+          <a class="btn btn-line" href="#toolkit">Explore the toolkit</a>
+        </div>
+        <div class="hero-meta">
+          <div><b>1×</b><span>enrolment, for life</span></div>
+          <div><b>1:1</b><span>private tutoring</span></div>
+          <div><b>0</b><span>monthly fees</span></div>
+        </div>
+      </div>
+      <div class="stage">
+        <svg class="inf" viewBox="60 30 280 140" aria-hidden="true"><rect x="60" y="30" width="280" height="140" fill="url(#heroGrad)" mask="url(#lbRingMask)"/></svg>
+        <article class="lesson-card" aria-label="Example of a lesson">
+          <div class="lc-top"><span class="label">Example lesson</span><span>Track A · Career</span></div>
+          <h3>"Should I accept the offer in Singapore?"</h3>
+          <div class="lc-tutor">
+            <span class="av" aria-hidden="true">CS</span>
+            <div><b>Career strategist</b><small>Matched to your case</small></div>
+          </div>
+          <ul class="lc-list">
+            <li>One-way and two-way doors</li>
+            <li>The pre-mortem for a big move</li>
+            <li>Negotiating an international contract</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <div class="strip dark" aria-label="Subjects taught">
+    <div class="wrap">
+      <span>Career strategy</span><span>Negotiation</span><span>Relationships</span><span>Ethics</span><span>Money</span><span>Life abroad</span><span>Resilience</span><span>Purpose</span>
+    </div>
+  </div>
+
+  <!-- PHILOSOPHY -->
+  <section class="light" id="philosophy">
+    <div class="wrap philo">
+      <div>
+        <p class="label" style="color:var(--indigo)">Our philosophy</p>
+        <blockquote style="margin-top:18px">School taught you many subjects. Rarely the one you use every day: <span>how to decide.</span></blockquote>
+      </div>
+      <div class="text">
+        <svg class="fork" viewBox="0 0 360 120" aria-hidden="true">
+          <path d="M10 70 H150"/><path d="M150 70 C200 70 210 22 260 22 H350"/><path d="M150 70 H350"/><path d="M150 70 C200 70 210 112 260 112 H350" stroke-dasharray="2 8"/>
+          <circle class="dot" cx="150" cy="70" r="8"/>
+        </svg>
+        <p class="first">Big life transitions shouldn't be navigated alone, and they can't be solved by a one-size-fits-all online course.</p>
+        <p>So we built a school without a fixed syllabus. Your studies begin the moment you face a real dilemma. Each time, you are matched with a tutor whose expertise fits your situation, and you leave with an answer and with skills you keep for the next decision.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW -->
+  <section class="light flush" id="how">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label" style="color:var(--indigo)">How your studies work</p>
+        <h2>Every dilemma becomes a lesson</h2>
+        <p class="lede">There are no modules to sit through. Each course of study follows the same three steps, as often as life requires.</p>
+      </div>
+      <div class="steps">
+        <article class="step"><span class="n">1</span><h3>Bring your question</h3><p>Facing a career pivot, a personal dilemma or a major lifestyle choice? Submit your situation securely, in your own words.</p><span class="tag">Whenever you need it</span></article>
+        <article class="step"><span class="n">2</span><h3>Meet your tutor</h3><p>We review your case and match you with the educator whose background and experience fit the subject of your problem.</p><span class="tag">Matched to your theme</span></article>
+        <article class="step"><span class="n">3</span><h3>Learn and decide</h3><p>You receive a deep 1-to-1 analysis, direct guidance, and a reading list of articles and frameworks chosen for your exact situation.</p><span class="tag">Yours to keep</span></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLKIT -->
+  <section class="dark" id="toolkit">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label amber">The decision toolkit</p>
+        <h2>Tools you'll learn once and use for life</h2>
+        <p class="lede">Every course of study leaves you with methods you can reuse. These are some of the frameworks students practise with their tutors.</p>
+      </div>
+      <div class="catalog">
+        <article class="class"><div class="thumb g1"><span class="chip">Clarity</span><h3>Values compass</h3></div><div class="class-body"><p>Name what matters most to you, then test each option against it.</p><p class="use"><b>Use it when</b>every option looks reasonable on paper.</p></div></article>
+        <article class="class"><div class="thumb g2"><span class="chip">Risk</span><h3>The pre-mortem</h3></div><div class="class-body"><p>Imagine it's a year later and your choice failed. Work out why, before you commit.</p><p class="use"><b>Use it when</b>you feel sure and want to check that you should.</p></div></article>
+        <article class="class"><div class="thumb g3"><span class="chip">Speed</span><h3>One-way &amp; two-way doors</h3></div><div class="class-body"><p>Sort decisions by whether they can be undone, and spend your time on the ones that can't.</p><p class="use"><b>Use it when</b>you're stuck overthinking something small.</p></div></article>
+        <article class="class"><div class="thumb g4"><span class="chip">Perspective</span><h3>10 / 10 / 10</h3></div><div class="class-body"><p>Ask how you'll feel about the choice in 10 minutes, 10 months and 10 years.</p><p class="use"><b>Use it when</b>emotions are running high.</p></div></article>
+        <article class="class"><div class="thumb g5"><span class="chip">Options</span><h3>Widen the frame</h3></div><div class="class-body"><p>Turn "this or that" into five real possibilities before you choose.</p><p class="use"><b>Use it when</b>a decision feels like a trap with two doors.</p></div></article>
+        <article class="class"><div class="thumb g6"><span class="chip">Purpose</span><h3>Life prototypes</h3></div><div class="class-body"><p>Try a small, low-cost version of a big change before you redesign everything.</p><p class="use"><b>Use it when</b>you're drawn to a new path but unsure.</p></div></article>
+      </div>
+      <p class="catalog-note">Your tutor chooses which tools to teach based on your situation, so every reading list is different.</p>
+    </div>
+  </section>
+
+  <!-- FACULTY / MATCHER -->
+  <section class="light" id="tutor">
+    <div class="wrap matcher">
+      <div>
+        <p class="label" style="color:var(--indigo)">Our faculty</p>
+        <h2 style="margin-top:16px">Meet the tutor your question deserves</h2>
+        <p class="sub" style="margin-top:18px;font-size:1.15rem">Our faculty is an international network of specialists. Choose a theme to see how a case might be matched. Real matches are made by people who read your situation in full.</p>
+        <div class="chips" id="chips" role="group" aria-label="Choose a theme"></div>
+      </div>
+      <article class="tcard" aria-live="polite">
+        <div class="tcard-top">
+          <div class="tcard-row"><span class="label">Example match</span><span id="m-ref">Case LBS-0000</span></div>
+          <div class="tutor"><span class="av" id="m-av" aria-hidden="true"></span><div><small>Your tutor</small><h3 id="m-role"></h3></div></div>
+        </div>
+        <div class="tcard-body">
+          <p class="who" id="m-who"></p>
+          <div><p class="reading-h">Your reading list</p><ul class="res-list" id="m-res"></ul></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="light flush" id="benefits">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label" style="color:var(--indigo)">What enrolment includes</p>
+        <h2>One enrolment. A lifetime of learning.</h2>
+      </div>
+      <div class="benefits">
+        <article class="benefit"><svg viewBox="0 0 42 42" aria-hidden="true"><path class="acc" d="M21 21c-3-5-6-7-9-7a7 7 0 0 0 0 14c3 0 6-2 9-7s6-7 9-7a7 7 0 0 1 0 14c-3 0-6-2-9-7z"/></svg><h3>Lifetime access</h3><p>A lifelong partner in decision-making. No expiry dates and no monthly subscriptions.</p></article>
+        <article class="benefit"><svg viewBox="0 0 42 42" aria-hidden="true"><rect x="10" y="19" width="22" height="16" rx="3"/><path class="acc" d="M15 19v-5a6 6 0 0 1 12 0v5"/><path d="M21 26v3"/></svg><h3>Strict 1-to-1 privacy</h3><p>Every conversation stays confidential, between you and your assigned tutor.</p></article>
+        <article class="benefit"><svg viewBox="0 0 42 42" aria-hidden="true"><path d="M7 11c5-2 10-2 14 2 4-4 9-4 14-2v20c-5-2-10-2-14 2-4-4-9-4-14-2z"/><path class="acc" d="M21 13v20"/></svg><h3>Curated library</h3><p>Targeted articles and frameworks for the problem you're solving today, instead of generic video modules.</p></article>
+        <article class="benefit"><svg viewBox="0 0 42 42" aria-hidden="true"><circle cx="21" cy="21" r="13"/><path class="acc" d="M25 17l-6 2-2 6 6-2z"/></svg><h3>Tutoring that adapts</h3><p>Each inquiry is matched to the right expertise, so the guidance fits the nature of your question.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRACKS -->
+  <section class="dark" id="tracks">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label amber">Who it's for</p>
+        <h2>Three tracks for life's crossroads</h2>
+        <p class="lede">Our students include executives, expats, creatives and global citizens who value objective, high-level counsel.</p>
+      </div>
+      <div class="tracks">
+        <article class="track"><span class="label">Track A</span><h3>Strategic career moves</h3><ul><li>Negotiating international contracts</li><li>Switching industries</li><li>Handling conflict at work</li></ul></article>
+        <article class="track"><span class="label">Track B</span><h3>Personal crossroads</h3><ul><li>Managing relationships</li><li>Working through ethical dilemmas</li><li>Major financial or lifestyle transitions</li></ul></article>
+        <article class="track"><span class="label">Track C</span><h3>Existential clarity</h3><ul><li>Recovering from burnout</li><li>Searching for purpose</li><li>Redesigning how you live</li></ul></article>
+      </div>
+      <div class="everyone">
+        <svg viewBox="70 35 260 130" aria-hidden="true"><use href="#inf" class="o"/><use href="#inf" class="i"/></svg>
+        <p>Wherever you live and whatever stage of life you're at, hard decisions feel the same. If you're standing at one, there's a seat for you here.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="light" id="faq">
+    <div class="wrap faq-grid">
+      <div class="sec-head" style="margin-bottom:0">
+        <p class="label" style="color:var(--indigo)">Questions</p>
+        <h2>Before you enrol</h2>
+      </div>
+      <div class="faq">
+        <details open><summary>Is there a fixed curriculum?</summary><p>No. Your studies are built around the decisions you bring. When you submit a dilemma, your tutor prepares guidance and a reading list for that situation only.</p></details>
+        <details><summary>How long does my enrolment last?</summary><p>For life. You enrol once, and you keep the right to submit new challenges whenever you face them. There are no renewals or monthly fees.</p></details>
+        <details><summary>Who are the tutors?</summary><p>A curated network of educators with expertise across careers, relationships, finance, ethics, wellbeing and more. Each inquiry is assigned to the one whose experience fits your situation.</p></details>
+        <details><summary>Is what I share kept private?</summary><p>Yes. All interactions are strictly confidential and take place only between you and your assigned tutor.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLY -->
+  <section class="dark apply-sec" id="apply">
+    <div class="glow" aria-hidden="true"></div>
+    <div class="wrap apply">
+      <div>
+        <p class="label amber">Admissions</p>
+        <h2>Start your lifetime of better decisions</h2>
+        <p class="intro">Tell us a little about yourself. An admissions advisor will follow up personally to explain enrolment and answer your questions.</p>
+        <ul class="checks">
+          <li>One enrolment, never a renewal</li>
+          <li>Submit a new question whenever life asks one</li>
+          <li>Private 1-to-1 tutoring, worldwide</li>
+        </ul>
+      </div>
+      <div>
+        <form class="panel" id="form" novalidate method="POST" action="https://formsubmit.co/cbeebcf4e99a0dfc7fc240e7575fc691">
+          <input type="hidden" name="_subject" id="h-subject" value="New enrolment application">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" id="h-next" value="https://lifeblueprintstudy.github.io/thanks.html">
+          <input type="hidden" name="_autoresponse" id="h-auto" value="">
+          <input type="hidden" name="First subject" id="h-theme" value="">
+          <input type="hidden" name="Language" id="h-lang" value="English">
+          <div class="row2">
+            <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name"></div>
+            <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email"></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label for="f-region">Where you live</label>
+              <select id="f-region" name="region"><option value="Europe">Europe</option><option value="North America">North America</option><option value="Latin America">Latin America</option><option value="Africa">Africa</option><option value="Middle East">Middle East</option><option value="Asia">Asia</option><option value="Oceania">Oceania</option></select>
+            </div>
+            <div class="field"><label for="f-theme">First subject</label><select id="f-theme"></select></div>
+          </div>
+          <div class="field"><label for="f-msg">What's on your mind? (optional)</label><textarea id="f-msg" name="message" placeholder="A few lines are enough. You can share the full picture with your tutor later."></textarea></div>
+          <input type="text" name="_honey" id="f-honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+          <p class="error" id="f-err" hidden></p>
+          <button class="btn btn-amber" id="f-send" type="submit" style="justify-self:start">Send application <span class="arrow">→</span></button>
+          <p class="fine">We only use your details to reply about enrolment. Prefer email? Write to lifeblueprintstudy@gmail.com</p>
+        </form>
+        <div class="panel" id="confirm" hidden>
+          <p class="label" style="color:var(--indigo)">Application sent</p>
+          <h3 id="c-title">Thank you.</h3>
+          <p id="c-body" style="color:var(--muted)"></p>
+          <button class="btn btn-line" id="c-back" type="button" style="justify-self:start">Send another</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="dark">
+  <div class="wrap">
+    <svg class="logo" viewBox="0 0 400 200" role="img" aria-label="Life Blueprint logo">
+      <rect class="logo-ring" x="0" y="0" width="400" height="200" mask="url(#lbLogoMask)"/>
+      <text x="200" y="117" text-anchor="middle" textLength="364" lengthAdjust="spacingAndGlyphs">LIFE BLUEPRINT</text>
+    </svg>
+    <span>© 2026 Life Blueprint Study · A lifetime school for life's decisions</span>
+  </div>
+</footer>
+
+<script>
+const DA = {
+  "Life Blueprint Study, home": "Life Blueprint Study, forside",
+  "Main": "Hovedmenu",
+  "Language": "Sprog",
+  "How it works": "Sådan virker det",
+  "Toolkit": "Værktøjer",
+  "Faculty": "Undervisere",
+  "Tracks": "Linjer",
+  "FAQ": "Spørgsmål",
+  "Apply": "Søg optagelse",
+  "Enrolment open all year": "Optagelse hele året",
+  "Learn to make the choices that": "Lær at træffe de valg, der",
+  "shape your life.": "former dit liv.",
+  "Life Blueprint Study is a lifetime school for life's biggest decisions. Enrol once. Whenever you reach a crossroads, a personal tutor teaches you the tools to think it through and choose with confidence.": "Life Blueprint Study er en livslang skole for livets største beslutninger. Du optages én gang. Hver gang du står ved en skillevej, lærer en personlig underviser dig værktøjerne til at tænke det igennem og vælge med ro i maven.",
+  "Apply for enrolment": "Søg optagelse",
+  "Explore the toolkit": "Se værktøjerne",
+  "enrolment, for life": "optagelse, for livet",
+  "private tutoring": "personlig undervisning",
+  "monthly fees": "månedlige gebyrer",
+  "Example of a lesson": "Eksempel på en lektion",
+  "Example lesson": "Eksempel på lektion",
+  "Track A · Career": "Linje A · Karriere",
+  "\"Should I accept the offer in Singapore?\"": "\"Skal jeg sige ja til jobbet i Singapore?\"",
+  "Career strategist": "Karrierestrateg",
+  "Matched to your case": "Matchet til din sag",
+  "One-way and two-way doors": "Envejs- og tovejsdøre",
+  "The pre-mortem for a big move": "Pre-mortem før en stor flytning",
+  "Negotiating an international contract": "Forhandling af en international kontrakt",
+  "Subjects taught": "Fag",
+  "Career strategy": "Karrierestrategi",
+  "Negotiation": "Forhandling",
+  "Relationships": "Relationer",
+  "Ethics": "Etik",
+  "Money": "Økonomi",
+  "Life abroad": "Livet i udlandet",
+  "Resilience": "Robusthed",
+  "Purpose": "Mening",
+  "Our philosophy": "Vores filosofi",
+  "School taught you many subjects. Rarely the one you use every day:": "Skolen lærte dig mange fag. Sjældent det, du bruger hver dag:",
+  "how to decide.": "at beslutte dig.",
+  "Big life transitions shouldn't be navigated alone, and they can't be solved by a one-size-fits-all online course.": "Store forandringer i livet skal man ikke stå alene med, og de kan ikke løses med et online kursus, der passer til alle.",
+  "So we built a school without a fixed syllabus. Your studies begin the moment you face a real dilemma. Each time, you are matched with a tutor whose expertise fits your situation, and you leave with an answer and with skills you keep for the next decision.": "Derfor har vi bygget en skole uden fast pensum. Dine studier begynder, når du står over for et virkeligt dilemma. Hver gang bliver du matchet med en underviser, hvis ekspertise passer til din situation, og du går derfra med et svar og med færdigheder, du kan bruge til næste beslutning.",
+  "How your studies work": "Sådan foregår dine studier",
+  "Every dilemma becomes a lesson": "Hvert dilemma bliver en lektion",
+  "There are no modules to sit through. Each course of study follows the same three steps, as often as life requires.": "Der er ingen moduler at sidde igennem. Hvert forløb følger de samme tre trin, så ofte livet kræver det.",
+  "Bring your question": "Kom med dit spørgsmål",
+  "Facing a career pivot, a personal dilemma or a major lifestyle choice? Submit your situation securely, in your own words.": "Står du over for et karriereskift, et personligt dilemma eller et stort livsvalg? Beskriv din situation sikkert og med dine egne ord.",
+  "Whenever you need it": "Når du har brug for det",
+  "Meet your tutor": "Mød din underviser",
+  "We review your case and match you with the educator whose background and experience fit the subject of your problem.": "Vi gennemgår din sag og matcher dig med den underviser, hvis baggrund og erfaring passer til dit emne.",
+  "Matched to your theme": "Matchet til dit tema",
+  "Learn and decide": "Lær og beslut",
+  "You receive a deep 1-to-1 analysis, direct guidance, and a reading list of articles and frameworks chosen for your exact situation.": "Du får en grundig 1-til-1-analyse, direkte vejledning og en læseliste med artikler og metoder udvalgt til netop din situation.",
+  "Yours to keep": "Dine for altid",
+  "The decision toolkit": "Beslutningsværktøjer",
+  "Tools you'll learn once and use for life": "Værktøjer du lærer én gang og bruger hele livet",
+  "Every course of study leaves you with methods you can reuse. These are some of the frameworks students practise with their tutors.": "Hvert forløb giver dig metoder, du kan bruge igen. Her er nogle af dem, vores studerende øver med deres undervisere.",
+  "Clarity": "Klarhed",
+  "Values compass": "Værdikompasset",
+  "Name what matters most to you, then test each option against it.": "Sæt ord på det, der betyder mest for dig, og test hver mulighed mod det.",
+  "Use it when": "Brug den når",
+  "every option looks reasonable on paper.": "alle muligheder ser fornuftige ud på papiret.",
+  "Risk": "Risiko",
+  "The pre-mortem": "Pre-mortem",
+  "Imagine it's a year later and your choice failed. Work out why, before you commit.": "Forestil dig, at der er gået et år, og dit valg slog fejl. Find ud af hvorfor, før du binder dig.",
+  "you feel sure and want to check that you should.": "du føler dig sikker og vil tjekke, om du har grund til det.",
+  "Speed": "Tempo",
+  "One-way & two-way doors": "Envejs- og tovejsdøre",
+  "Sort decisions by whether they can be undone, and spend your time on the ones that can't.": "Sortér beslutninger efter, om de kan gøres om, og brug din tid på dem, der ikke kan.",
+  "you're stuck overthinking something small.": "du sidder fast og overtænker noget småt.",
+  "Perspective": "Perspektiv",
+  "Ask how you'll feel about the choice in 10 minutes, 10 months and 10 years.": "Spørg dig selv, hvordan du har det med valget om 10 minutter, 10 måneder og 10 år.",
+  "emotions are running high.": "følelserne kører højt.",
+  "Options": "Muligheder",
+  "Widen the frame": "Udvid rammen",
+  "Turn \"this or that\" into five real possibilities before you choose.": "Gør \"det ene eller det andet\" til fem reelle muligheder, før du vælger.",
+  "a decision feels like a trap with two doors.": "en beslutning føles som en fælde med to døre.",
+  "Life prototypes": "Livsprototyper",
+  "Try a small, low-cost version of a big change before you redesign everything.": "Prøv en lille, billig udgave af en stor forandring, før du lægger hele livet om.",
+  "you're drawn to a new path but unsure.": "du drages mod en ny vej, men er i tvivl.",
+  "Your tutor chooses which tools to teach based on your situation, so every reading list is different.": "Din underviser vælger værktøjerne ud fra din situation, så ingen læselister er ens.",
+  "Our faculty": "Vores undervisere",
+  "Meet the tutor your question deserves": "Mød den underviser, dit spørgsmål fortjener",
+  "Our faculty is an international network of specialists. Choose a theme to see how a case might be matched. Real matches are made by people who read your situation in full.": "Vores undervisere er et internationalt netværk af specialister. Vælg et tema og se, hvordan en sag kan blive matchet. De rigtige match laves af mennesker, der læser hele din situation.",
+  "Choose a theme": "Vælg et tema",
+  "Example match": "Eksempel på match",
+  "Your tutor": "Din underviser",
+  "Your reading list": "Din læseliste",
+  "What enrolment includes": "Det får du med din optagelse",
+  "One enrolment. A lifetime of learning.": "Én optagelse. Et helt liv med læring.",
+  "Lifetime access": "Adgang for livet",
+  "A lifelong partner in decision-making. No expiry dates and no monthly subscriptions.": "En livslang sparringspartner i dine beslutninger. Ingen udløbsdato og intet månedligt abonnement.",
+  "Strict 1-to-1 privacy": "Fuld fortrolighed 1-til-1",
+  "Every conversation stays confidential, between you and your assigned tutor.": "Alle samtaler er fortrolige og foregår kun mellem dig og din underviser.",
+  "Curated library": "Udvalgt bibliotek",
+  "Targeted articles and frameworks for the problem you're solving today, instead of generic video modules.": "Målrettede artikler og metoder til det problem, du står med i dag, i stedet for generiske videomoduler.",
+  "Tutoring that adapts": "Undervisning der tilpasser sig",
+  "Each inquiry is matched to the right expertise, so the guidance fits the nature of your question.": "Hver henvendelse matches med den rette ekspertise, så vejledningen passer til dit spørgsmål.",
+  "Who it's for": "Hvem det er for",
+  "Three tracks for life's crossroads": "Tre linjer til livets skilleveje",
+  "Our students include executives, expats, creatives and global citizens who value objective, high-level counsel.": "Blandt vores studerende er ledere, expats, kreative og verdensborgere, der værdsætter objektiv rådgivning på højt niveau.",
+  "Track A": "Linje A",
+  "Strategic career moves": "Strategiske karrierevalg",
+  "Negotiating international contracts": "Forhandling af internationale kontrakter",
+  "Switching industries": "Skift af branche",
+  "Handling conflict at work": "Konflikter på arbejdspladsen",
+  "Track B": "Linje B",
+  "Personal crossroads": "Personlige skilleveje",
+  "Managing relationships": "Relationer",
+  "Working through ethical dilemmas": "Etiske dilemmaer",
+  "Major financial or lifestyle transitions": "Store økonomiske skift eller livsstilsskift",
+  "Track C": "Linje C",
+  "Existential clarity": "Eksistentiel klarhed",
+  "Recovering from burnout": "Vejen tilbage efter stress",
+  "Searching for purpose": "Søgen efter mening",
+  "Redesigning how you live": "Et nyt design for dit liv",
+  "Wherever you live and whatever stage of life you're at, hard decisions feel the same. If you're standing at one, there's a seat for you here.": "Uanset hvor du bor, og hvor du er i livet, føles svære beslutninger ens. Står du ved en skillevej, er der en plads til dig her.",
+  "Questions": "Spørgsmål",
+  "Before you enrol": "Før du søger optagelse",
+  "Is there a fixed curriculum?": "Er der et fast pensum?",
+  "No. Your studies are built around the decisions you bring. When you submit a dilemma, your tutor prepares guidance and a reading list for that situation only.": "Nej. Dine studier bygges op om de beslutninger, du kommer med. Når du sender et dilemma, forbereder din underviser vejledning og en læseliste til netop den situation.",
+  "How long does my enrolment last?": "Hvor længe gælder min optagelse?",
+  "For life. You enrol once, and you keep the right to submit new challenges whenever you face them. There are no renewals or monthly fees.": "Hele livet. Du optages én gang og beholder retten til at sende nye udfordringer, når du møder dem. Der er ingen fornyelser eller månedlige gebyrer.",
+  "Who are the tutors?": "Hvem er underviserne?",
+  "A curated network of educators with expertise across careers, relationships, finance, ethics, wellbeing and more. Each inquiry is assigned to the one whose experience fits your situation.": "Et udvalgt netværk af undervisere med ekspertise i karriere, relationer, økonomi, etik, trivsel og meget mere. Hver henvendelse går til den, hvis erfaring passer til din situation.",
+  "Is what I share kept private?": "Er det, jeg deler, fortroligt?",
+  "Yes. All interactions are strictly confidential and take place only between you and your assigned tutor.": "Ja. Al kontakt er strengt fortrolig og foregår kun mellem dig og din underviser.",
+  "Admissions": "Optagelse",
+  "Start your lifetime of better decisions": "Start et liv med bedre beslutninger",
+  "Tell us a little about yourself. An admissions advisor will follow up personally to explain enrolment and answer your questions.": "Fortæl os lidt om dig selv. En studievejleder kontakter dig personligt, fortæller om optagelsen og svarer på dine spørgsmål.",
+  "One enrolment, never a renewal": "Én optagelse, aldrig en fornyelse",
+  "Submit a new question whenever life asks one": "Send et nyt spørgsmål, hver gang livet stiller et",
+  "Private 1-to-1 tutoring, worldwide": "Personlig 1-til-1-undervisning, i hele verden",
+  "Your name": "Dit navn",
+  "Email": "E-mail",
+  "Where you live": "Hvor du bor",
+  "Europe": "Europa",
+  "North America": "Nordamerika",
+  "Latin America": "Latinamerika",
+  "Africa": "Afrika",
+  "Middle East": "Mellemøsten",
+  "Asia": "Asien",
+  "Oceania": "Oceanien",
+  "First subject": "Første emne",
+  "What's on your mind? (optional)": "Hvad tænker du på? (valgfrit)",
+  "A few lines are enough. You can share the full picture with your tutor later.": "Et par linjer er nok. Du kan fortælle din underviser det hele senere.",
+  "Send application": "Send ansøgning",
+  "We only use your details to reply about enrolment. Prefer email? Write to lifeblueprintstudy@gmail.com": "Vi bruger kun dine oplysninger til at svare dig om optagelse. Foretrækker du e-mail? Skriv til lifeblueprintstudy@gmail.com",
+  "Application sent": "Ansøgning sendt",
+  "Thank you.": "Tak.",
+  "Send another": "Send en til",
+  "© 2026 Life Blueprint Study · A lifetime school for life's decisions": "© 2026 Life Blueprint Study · En livslang skole for livets beslutninger"
+};
+
+const THEMES_DA = {
+  career: { label: "Karriereskift", role: "Karrierestrateg", who: "Tidligere HR-direktør, der har guidet folk gennem karriereskift i et dusin brancher.",
+    res: [["Metode", "Envejs- og tovejsdøre"], ["Artikel", "Karriereskift eller flugt fra et job?"], ["Øvelse", "Kortlæg de evner, du kan tage med til en ny branche"]] },
+  negotiation: { label: "Kontraktforhandling", role: "Forhandlingsunderviser", who: "Baggrund i international handelsret og ansættelser på tværs af landegrænser.",
+    res: [["Metode", "Kend din smertegrænse, før du begynder"], ["Artikel", "Sådan forhandler man forskelligt i forskellige kulturer"], ["Tjekliste", "Klausuler du skal læse to gange i en international kontrakt"]] },
+  conflict: { label: "Konflikt på arbejdet", role: "Organisationsmægler", who: "Certificeret mægler med erfaring i konflikter i teams og ledelser.",
+    res: [["Metode", "Skil sagen fra relationen"], ["Artikel", "Forbered den svære samtale"], ["Manuskript", "Åbningsreplikker der tager temperaturen ned"]] },
+  relationships: { label: "Relationer", role: "Parterapeut", who: "Familie- og parterapeut med fokus på store forandringer i livet.",
+    res: [["Metode", "Behov, ønsker og dealbreakers"], ["Artikel", "At beslutte sammen, når I vil noget forskelligt"], ["Øvelse", "Et ugentligt tjek-ind, der rent faktisk bliver brugt"]] },
+  money: { label: "Økonomisk overgang", role: "Økonomisk livsplanlægger", who: "Rådgiver med speciale i arv, flytning til udlandet og karrierepauser.",
+    res: [["Metode", "Først luft i økonomien, så afkast"], ["Artikel", "Pengespørgsmål du skal afklare før en stor flytning"], ["Øvelse", "Et overblik over dine forpligtelser på én side"]] },
+  relocation: { label: "Flytte til udlandet", role: "Expat-rådgiver", who: "Har boet på fire kontinenter og hjælper familier gennem internationale flytninger.",
+    res: [["Metode", "Pre-mortem før en stor flytning"], ["Artikel", "Sådan bygger du et socialt liv op fra bunden"], ["Tjekliste", "Det skal være på plads før din første uge"]] },
+  ethics: { label: "Etisk dilemma", role: "Anvendt etiker", who: "Lektor i filosofi, der rådgiver ledere om svære valg uden klare regler.",
+    res: [["Metode", "Værdikompasset"], ["Artikel", "Når loyalitet og ærlighed trækker hver sin vej"], ["Øvelse", "Skriv beslutningsnotatet til dit fremtidige jeg"]] },
+  burnout: { label: "Stress", role: "Robusthedscoach", who: "Arbejdspsykolog, der arbejder med fagfolk under højt pres.",
+    res: [["Metode", "Energiregnskab: hvad giver, og hvad dræner"], ["Artikel", "Hvile er ikke det samme som restitution"], ["Plan", "En gradvis vej tilbage til fuld kapacitet"]] },
+  purpose: { label: "Finde mening", role: "Livsdesign-mentor", who: "Arbejder med mennesker, der designer deres liv om efter en stor forandring.",
+    res: [["Metode", "Livsprototyper"], ["Artikel", "Mening er noget, man øver, ikke noget, man finder"], ["Øvelse", "Tre mulige liv, skitseret side om side"]] }
+};
+
+const UI = {
+  en: { case: "Case", other: "Something else", sending: "Sending…",
+    errName: "Add your name so your advisor knows who to address.",
+    errEmail: "Enter an email address like name@example.com.",
+    errSend: "Your application couldn't be sent. Check your connection and try again, or email us at lifeblueprintstudy@gmail.com.",
+    thanks: n => "Thank you, " + n + ".",
+    sent: (e, t) => "Your application is on its way. An admissions advisor will reply to " + e + " about enrolment and your interest in " + t.toLowerCase() + "." },
+  da: { case: "Sag", other: "Noget andet", sending: "Sender…",
+    errName: "Skriv dit navn, så vejlederen ved, hvem vi skriver til.",
+    errEmail: "Skriv en e-mailadresse som navn@eksempel.dk.",
+    errSend: "Din ansøgning kunne ikke sendes. Tjek din forbindelse og prøv igen, eller skriv til os på lifeblueprintstudy@gmail.com.",
+    thanks: n => "Tak, " + n + ".",
+    sent: (e, t) => "Din ansøgning er på vej. En studievejleder svarer dig på " + e + " om optagelse og din interesse for " + t.toLowerCase() + "." }
+};
+
+let LANG = "en";
+const ORIG = new WeakMap();
+function translatePage(lang) {
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+    acceptNode: n => n.parentElement.closest("script,style,svg,#chips,#f-theme,.tcard,#c-body,#c-title,#f-err") ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT
+  });
+  let n;
+  while ((n = walker.nextNode())) {
+    if (!ORIG.has(n)) ORIG.set(n, n.nodeValue);
+    const orig = ORIG.get(n), key = orig.replace(/\s+/g, " ").trim();
+    if (!key) continue;
+    if (lang === "da" && DA[key]) {
+      const lead = orig.match(/^\s*/)[0], trail = orig.match(/\s*$/)[0];
+      n.nodeValue = lead + DA[key] + trail;
+    } else n.nodeValue = orig;
+  }
+  document.querySelectorAll("[placeholder],[aria-label]").forEach(el => {
+    ["placeholder", "aria-label"].forEach(a => {
+      if (!el.hasAttribute(a)) return;
+      const k = "data-en-" + a;
+      if (!el.hasAttribute(k)) el.setAttribute(k, el.getAttribute(a));
+      const en = el.getAttribute(k);
+      el.setAttribute(a, lang === "da" && DA[en] ? DA[en] : en);
+    });
+  });
+}
+
+const THEMES = [
+  { key: "career", label: "Career pivot", role: "Career strategist", init: "CS", who: "Former HR director who has guided career changers across a dozen industries.",
+    res: [["Framework", "One-way and two-way doors"], ["Article", "Telling a career change from a job escape"], ["Worksheet", "Mapping skills you can carry into a new field"]] },
+  { key: "negotiation", label: "Contract negotiation", role: "Negotiation tutor", init: "NT", who: "Background in international commercial law and cross-border hiring.",
+    res: [["Framework", "Know your walk-away point before you start"], ["Article", "How negotiation norms differ across cultures"], ["Checklist", "Clauses to read twice in a global contract"]] },
+  { key: "conflict", label: "Workplace conflict", role: "Organisational mediator", init: "OM", who: "Certified mediator experienced in team and leadership disputes.",
+    res: [["Framework", "Separating the issue from the relationship"], ["Article", "Preparing for the difficult conversation"], ["Script", "Opening lines that lower the temperature"]] },
+  { key: "relationships", label: "Relationships", role: "Relationship counsellor", init: "RC", who: "Family and couples counsellor focused on life transitions.",
+    res: [["Framework", "Needs, wants and dealbreakers"], ["Article", "Deciding together when you want different things"], ["Exercise", "A weekly check-in that actually gets used"]] },
+  { key: "money", label: "Financial transition", role: "Financial life planner", init: "FP", who: "Planner specialising in inheritance, relocation and career breaks.",
+    res: [["Framework", "Runway first, returns second"], ["Article", "Money questions to settle before a big move"], ["Worksheet", "A one-page picture of your obligations"]] },
+  { key: "relocation", label: "Moving abroad", role: "Expat transition advisor", init: "EA", who: "Has lived on four continents and supports families through international moves.",
+    res: [["Framework", "The pre-mortem for a big move"], ["Article", "Building a social life from zero"], ["Checklist", "What to arrange before your first week"]] },
+  { key: "ethics", label: "Ethical dilemma", role: "Applied ethicist", init: "AE", who: "Philosophy lecturer advising leaders on hard calls without clear rules.",
+    res: [["Framework", "Values compass"], ["Article", "When loyalty and honesty pull apart"], ["Exercise", "Writing the decision memo to your future self"]] },
+  { key: "burnout", label: "Burnout", role: "Resilience coach", init: "RE", who: "Occupational psychologist working with high-pressure professionals.",
+    res: [["Framework", "Energy audit: what fills and what drains"], ["Article", "Rest is not the same as recovery"], ["Plan", "A gradual return to full capacity"]] },
+  { key: "purpose", label: "Finding purpose", role: "Life design mentor", init: "LD", who: "Works with people redesigning their lives after a major change.",
+    res: [["Framework", "Life prototypes"], ["Article", "Purpose as a practice, not a discovery"], ["Exercise", "Three possible lives, sketched side by side"]] }
+];
+
+let current = "career";
+const chipsEl = document.getElementById("chips");
+const themeSel = document.getElementById("f-theme");
+
+function pick(key) {
+  const t = THEMES.find(x => x.key === key) || THEMES[0];
+  chipsEl.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c.dataset.key === t.key ? "true" : "false"));
+  const L = LANG === "da" ? Object.assign({}, t, THEMES_DA[t.key]) : t;
+  current = t.key;
+  document.getElementById("m-role").textContent = L.role;
+  document.getElementById("m-who").textContent = L.who;
+  document.getElementById("m-av").textContent = t.init;
+  document.getElementById("m-ref").textContent = UI[LANG].case + " LBS-" + (1000 + (THEMES.indexOf(t) + 1) * 137);
+  const list = document.getElementById("m-res");
+  list.innerHTML = "";
+  L.res.forEach(([kind, title]) => {
+    const li = document.createElement("li");
+    const k = document.createElement("span"); k.className = "kind"; k.textContent = kind;
+    const v = document.createElement("span"); v.textContent = title;
+    li.append(k, v); list.append(li);
+  });
+  themeSel.value = t.key;
+}
+
+THEMES.forEach(t => {
+  const b = document.createElement("button");
+  b.type = "button"; b.className = "chip"; b.dataset.key = t.key; b.textContent = t.label;
+  b.setAttribute("aria-pressed", "false");
+  b.addEventListener("click", () => pick(t.key));
+  chipsEl.append(b);
+  const o = document.createElement("option"); o.value = t.key; o.textContent = t.label;
+  themeSel.append(o);
+});
+const other = document.createElement("option"); other.value = "other"; other.textContent = "Something else";
+themeSel.append(other);
+
+function setLang(lang) {
+  LANG = lang === "da" ? "da" : "en";
+  document.documentElement.lang = LANG;
+  translatePage(LANG);
+  document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === LANG)));
+  THEMES.forEach(t => {
+    const label = LANG === "da" ? THEMES_DA[t.key].label : t.label;
+    chipsEl.querySelector('[data-key="' + t.key + '"]').textContent = label;
+    themeSel.querySelector('option[value="' + t.key + '"]').textContent = label;
+  });
+  other.textContent = UI[LANG].other;
+  err.hidden = true;
+  const sel = themeSel.value;
+  pick(current);
+  themeSel.value = sel;
+  try { localStorage.setItem("lb-lang", LANG); } catch (e) {}
+}
+document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+
+const form = document.getElementById("form");
+const confirmBox = document.getElementById("confirm");
+const err = document.getElementById("f-err");
+const AUTO = {
+  en: n => "Hi " + n + ",\n\nThank you for applying to Life Blueprint Study. We have received your application, and an admissions advisor will reply to you personally to explain enrolment and answer your questions.\n\nWhat happens next:\n1. We read your application.\n2. An advisor contacts you by email.\n3. Once enrolled, you can bring us any decision, for the rest of your life.\n\nA copy of what you sent us is included below. If you have anything to add, simply reply to this email.\n\nWarm regards,\nAdmissions\nLife Blueprint Study\nhttps://lifeblueprintstudy.github.io/",
+  da: n => "Hej " + n + ",\n\nTak for din ansøgning til Life Blueprint Study. Vi har modtaget den, og en studievejleder vender personligt tilbage til dig, fortæller om optagelsen og svarer på dine spørgsmål.\n\nSådan foregår det:\n1. Vi læser din ansøgning.\n2. En vejleder kontakter dig på e-mail.\n3. Når du er optaget, kan du komme til os med enhver beslutning, resten af livet.\n\nNedenfor finder du en kopi af det, du sendte os. Har du noget at tilføje, kan du blot svare på denne mail.\n\nVenlig hilsen\nOptagelsen\nLife Blueprint Study\nhttps://lifeblueprintstudy.github.io/"
+};
+const sendBtn = document.getElementById("f-send");
+form.addEventListener("submit", e => {
+  const name = form.name.value.trim();
+  const email = form.email.value.trim();
+  if (document.getElementById("f-honey").value) { e.preventDefault(); return; }
+  if (!name) { e.preventDefault(); err.textContent = UI[LANG].errName; err.hidden = false; form.name.focus(); return; }
+  if (!/^\S+@\S+\.\S+$/.test(email)) { e.preventDefault(); err.textContent = UI[LANG].errEmail; err.hidden = false; form.email.focus(); return; }
+  err.hidden = true;
+  const first = name.split(" ")[0];
+  document.getElementById("h-subject").value = "New enrolment application: " + name;
+  document.getElementById("h-theme").value = THEMES.find(x => x.key === themeSel.value)?.label || "Something else";
+  document.getElementById("h-lang").value = LANG === "da" ? "Danish" : "English";
+  document.getElementById("h-auto").value = AUTO[LANG](first);
+  document.getElementById("h-next").value = new URL("thanks.html?" + (LANG === "da" ? "da" : "en"), location.href).href;
+  if (!form.message.value.trim()) form.message.value = "-";
+  sendBtn.disabled = true; sendBtn.textContent = UI[LANG].sending;
+  window.addEventListener("pageshow", () => { sendBtn.disabled = false; sendBtn.innerHTML = LANG === "da" ? "Send ansøgning <span class=\"arrow\">→</span>" : "Send application <span class=\"arrow\">→</span>"; }, { once: true });
+});
+let startLang = "en";
+try { startLang = localStorage.getItem("lb-lang") || ((navigator.language || "").toLowerCase().startsWith("da") ? "da" : "en"); } catch (e) {}
+setLang(startLang);
+document.getElementById("c-back").addEventListener("click", () => { confirmBox.hidden = true; form.hidden = false; });
+</script>
+
+</body>
+</html>
