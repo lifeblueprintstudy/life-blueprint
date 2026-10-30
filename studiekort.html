@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Life Blueprint Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link crossorigin="anonymous" href="https://fonts.googleapis.com/css2?family=Gloock&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<style id="pagesize">@page{size:89.6mm 57.98mm;margin:0}</style>
+<style>
+/* ================= Værktøjets udseende ================= */
+:root{
+  --ink:#141815; --muted:#586058; --paper:#F7F8F3; --paper-2:#E9EBE2; --line:#D3D7CA;
+  --moss:#3F7A55; --amber:#F2C26A; --amber-ink:#9A6A0E;
+  --display:"Gloock",Georgia,serif; --body:"Hanken Grotesk","Helvetica Neue",Arial,sans-serif; --label:"Montserrat","Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5}
+.top{background:linear-gradient(135deg,#4A3F60,#3B5B4F 50%,#375A6E);color:#FFFBF2;padding:28px 24px}
+.top h1{font-family:var(--display);font-weight:400;font-size:clamp(28px,4vw,40px);margin:0;line-height:1.1}
+.top p{margin:0;max-width:62ch;color:#E6E0D0}
+.wrap{max-width:1180px;margin:0 auto}
+.layout{display:flex;flex-wrap:wrap;gap:28px;padding:28px 24px 64px}
+.panel{background:#FFFFFF;border:1px solid var(--line);border-radius:12px;padding:20px}
+.form{flex:1 1 320px;max-width:420px;display:flex;flex-direction:column;gap:14px}
+.preview{flex:999 1 560px;min-width:0;display:flex;flex-direction:column;gap:20px}
+h2{font-family:var(--label);font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin:0;color:var(--moss)}
+label{display:flex;flex-direction:column;gap:4px;font-weight:600;font-size:14px}
+label small{font-weight:400;color:var(--muted)}
+input[type=text],input[type=email]{font:inherit;font-weight:400;padding:10px 12px;border:1px solid #B9BFB0;border-radius:8px;background:#FFFFFF;color:var(--ink);min-height:44px}
+input[type=text]:focus,input[type=email]:focus,input[type=range]:focus-visible,button:focus-visible,.file:focus-within{outline:3px solid var(--amber);outline-offset:2px}
+.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.file{position:relative;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:8px;min-height:44px;border:1.5px dashed #B9BFB0;border-radius:8px;cursor:pointer;font-weight:600;color:var(--moss)}
+.file input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.sliders{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.sliders label{font-size:12px}
+input[type=range]{width:100%;accent-color:var(--moss)}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+button{font:inherit;font-weight:600;font-size:14px;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--ink);background:#FFFFFF;color:var(--ink);cursor:pointer}
+button.primary{background:var(--ink);color:#FFFBF2}
+button.amber{background:var(--amber);border-color:var(--amber);color:var(--ink)}
+button.danger{border-color:#B3261E;color:#B3261E}
+button.moss{background:var(--moss);border-color:var(--moss);color:#FFFBF2}
+button[disabled]{opacity:.6;cursor:progress}
+.send{display:flex;flex-direction:column;gap:10px;padding-top:16px;margin-top:4px;border-top:1px solid var(--line)}
+.send .err{color:#B3261E;font-size:14px;margin:0}
+.notice.ok{background:#E3EEE5;border-color:#9CC18A}
+#stage{position:fixed;left:-10000px;top:0;pointer-events:none}
+.check{flex-direction:row;align-items:center;gap:8px;font-weight:500}
+.check input{width:20px;height:20px;accent-color:var(--moss)}
+.note{font-size:13px;color:var(--muted);margin:0}
+.notice{display:none;font-size:14px;background:#FFF4DA;border:1px solid #E8C877;border-radius:8px;padding:10px 12px}
+.notice.show{display:block}
+.cards{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start}
+.cards figure{margin:0;display:flex;flex-direction:column;gap:8px}
+.cards figcaption{font-family:var(--label);font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--muted)}
+.zoom{zoom:1.55;box-shadow:0 1px 2px rgba(0,0,0,.08),0 6px 18px rgba(0,0,0,.12);border-radius:3.18mm;overflow:hidden;width:max-content}
+@media (max-width:760px){.zoom{zoom:1}}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)}
+th{font-family:var(--label);font-size:11px;letter-spacing:.1em;color:var(--muted)}
+td button{min-height:36px;padding:0 12px;font-size:13px}
+.empty{color:var(--muted);font-size:14px;margin:0}
+#print{display:none}
+
+/* ================= Selve kortet ================= */
+/* Kortstørrelse: 85.60 × 53.98 mm. --b er bleed (0 eller 2 mm). */
+.card{--b:0mm;position:relative;overflow:hidden;width:calc(85.6mm + 2*var(--b));height:calc(53.98mm + 2*var(--b));
+  font-family:var(--body);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.card.bleed{--b:2mm}
+.card svg{display:block}
+/* Forside */
+.front{color:#FFFBF2;padding:calc(12px + var(--b)) calc(14px + var(--b));display:flex;flex-direction:column;gap:8px;
+  background:radial-gradient(60% 55% at 0% 0%,rgba(201,138,170,.38),transparent 70%),radial-gradient(55% 50% at 100% 10%,rgba(240,178,96,.30),transparent 70%),radial-gradient(60% 60% at 100% 100%,rgba(96,170,210,.38),transparent 70%),linear-gradient(135deg,#4A3F60 0%,#3B5B4F 50%,#375A6E 100%)}
+.front .head{display:flex;align-items:center;justify-content:space-between;height:34px}
+.front .title{display:flex;flex-direction:column;align-items:flex-end;gap:1px;font-family:var(--label)}
+.front .title b{font-size:9px;font-weight:800;letter-spacing:.18em}
+.front .title span{font-size:6.5px;font-weight:600;letter-spacing:.18em;color:rgba(255,251,242,.78)}
+.front .mid{flex:1;display:flex;gap:12px;min-height:0}
+.photo{width:66px;height:84px;flex-shrink:0;border-radius:4px;overflow:hidden;position:relative;background:rgba(255,251,242,.12);border:1px solid rgba(255,251,242,.45);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:rgba(255,251,242,.8)}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo.has{border-color:rgba(255,251,242,.6)}
+.photo small{font-family:var(--label);font-size:6px;font-weight:700;letter-spacing:.12em}
+.fields{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
+.f{display:flex;flex-direction:column;gap:1px;min-width:0}
+.f i{font-style:normal;font-family:var(--label);font-size:6px;font-weight:700;letter-spacing:.12em;color:rgba(255,251,242,.78);white-space:nowrap}
+.f span{font-size:10px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.f .name{font-family:var(--display);font-weight:400;font-size:14px;line-height:1.1;white-space:nowrap;overflow:hidden}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:8px;row-gap:5px}
+.foot{display:flex;justify-content:space-between;align-items:center;font-family:var(--label);font-size:6px;font-weight:700;letter-spacing:.16em;color:rgba(255,251,242,.85)}
+.foot .am{color:#F2C26A}
+/* Bagside */
+.back{background:#F7F8F3;color:#141815;display:flex;flex-direction:column}
+.back .stripe{height:calc(5px + var(--b));flex-shrink:0;background:linear-gradient(90deg,#4A3F60 0%,#3B5B4F 50%,#375A6E 100%)}
+.back .body{flex:1;padding:10px calc(14px + var(--b)) 8px;display:flex;flex-direction:column;gap:8px;min-height:0}
+.back .head{display:flex;align-items:center;justify-content:space-between;height:26px}
+.back .tag{font-family:var(--label);font-size:6.5px;font-weight:700;letter-spacing:.16em;color:#3F7A55}
+.back .main{flex:1;display:flex;gap:14px;align-items:flex-end;min-height:0}
+.back .txt{flex:1;min-width:0;display:flex;flex-direction:column;gap:10px}
+.back .da{font-size:8px;line-height:1.35}
+.back .en{font-size:7px;line-height:1.35;font-style:italic;color:#586058}
+.back .sig{height:20px;border-bottom:1px solid #141815}
+.back .lbl{font-family:var(--label);font-size:6px;font-weight:700;letter-spacing:.12em;color:#586058;margin-top:3px}
+.back .qr{display:flex;flex-direction:column;align-items:center;gap:3px;flex-shrink:0;font-family:var(--label);font-size:5.5px;font-weight:700;letter-spacing:.06em;color:#586058}
+.back .found{height:calc(30px + var(--b));flex-shrink:0;background:#E9EBE2;border-top:1px solid #D3D7CA;padding:0 calc(14px + var(--b)) var(--b);display:flex;align-items:center;justify-content:space-between;gap:10px}
+.back .found b{display:block;font-size:7.5px;font-weight:600}
+.back .found em{display:block;font-size:6.5px;color:#586058}
+.back .mail{font-size:8px;font-weight:600;color:#3F7A55}
+
+@media print{
+  body{background:#FFFFFF}
+  body > *:not(#print){display:none !important}
+  #print{display:block}
+  #print .card{break-after:page;page-break-after:always}
+  #print .card:last-child{break-after:auto;page-break-after:auto}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <h1>Life Blueprint Study</h1>
+  </div>
+</header>
+
+<main class="wrap layout">
+  <form class="panel form" id="f" autocomplete="off">
+    <h2>Medlem</h2>
+    <label>Navn <input type="text" id="navn" placeholder="Fornavn Efternavn"></label>
+    <label>Studienr. <small>Tildeles automatisk, når kortet gemmes eller sendes</small><input type="text" id="nr" placeholder="Tildeles automatisk"></label>
+    <div class="row">
+      <label>Født <small>DD.MM.ÅÅÅÅ</small><input type="text" id="foedt" placeholder="24.05.1998" inputmode="numeric"></label>
+      <label>Optaget <small>DD.MM.ÅÅÅÅ</small><input type="text" id="optaget" inputmode="numeric"></label>
+    </div>
+    <label class="file">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+      <span id="fotolabel">Vælg foto</span>
+      <input type="file" id="foto" accept="image/*" aria-label="Vælg foto">
+    </label>
+    <div class="sliders" id="sliders" hidden>
+      <label>Zoom <input type="range" id="fz" min="100" max="250" value="100"></label>
+      <label>Vandret <input type="range" id="fx" min="0" max="100" value="50"></label>
+      <label>Lodret <input type="range" id="fy" min="0" max="100" value="35"></label>
+    </div>
+    <div class="btns">
+      <button type="button" class="amber" id="print1">Gem som PDF</button>
+      <button type="button" id="new">Nyt kort</button>
+    </div>
+    <div class="send">
+      <h2>Indmeld</h2>
+      <label>Din e-mail <small>Valgfri – så kan vi svare dig direkte</small><input type="email" id="mail" autocomplete="email" placeholder="navn@eksempel.dk"></label>
+      <button type="button" class="moss" id="send">Indmeld og send kort</button>
+      <p class="err" id="senderr" hidden></p>
+      <p class="note">Sender kortet som trykklar PDF (forside + bagside, 2 mm bleed) til lifeblueprintstudy@gmail.com.</p>
+    </div>
+    <p class="notice ok" id="sentnote">Tak! Kortet er sendt til Life Blueprint Study.</p>
+    <p class="notice" id="framenote">Udskrift og PDF virker først, når siden ligger på jeres hjemmeside. Her i forhåndsvisningen er det blokeret.</p>
+    <p class="note">I udskriftsvinduet: vælg <b>Gem som PDF</b>, margener <b>Ingen</b> og slå <b>Baggrundsgrafik</b> til.</p>
+  </form>
+
+  <section class="preview">
+    <div class="cards">
+      <figure><figcaption>FORSIDE</figcaption><div class="zoom" id="pvFront"></div></figure>
+      <figure><figcaption>BAGSIDE</figcaption><div class="zoom" id="pvBack"></div></figure>
+    </div>
+  </section>
+</main>
+
+<div id="print"></div>
+<div id="stage" aria-hidden="true"></div>
+<form id="sendForm" method="POST" enctype="multipart/form-data" action="https://formsubmit.co/cbeebcf4e99a0dfc7fc240e7575fc691" hidden>
+  <input type="hidden" name="_subject" value="Nyt studiekort">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_next" value="">
+  <input type="hidden" name="Navn" value="">
+  <input type="hidden" name="Studienr." value="">
+  <input type="hidden" name="Født" value="">
+  <input type="hidden" name="Optaget" value="">
+  <input type="hidden" name="email" value="">
+  <input type="text" name="_honey" tabindex="-1" autocomplete="off" value="">
+  <input type="file" name="attachment" accept="application/pdf">
+</form>
+
+<script>
+/* =====================================================
+   STUDIENUMRE – indsæt adressen på jeres Google-script her.
+   Står den tom, laves et tilfældigt nummer i browseren (uden tjek for dubletter).
+   ===================================================== */
+const NUMMER_URL = "https://script.google.com/macros/s/AKfycbxjxgnjjS7wgSKFjFRvFbUAno-0WcnQ7RU8px9SlOylwvimpnO1TL_ZdBLWlcucVUuy4w/exec";
+
+/* =====================================================
+   TEKSTER – ret dem her, så skifter de på alle kort
+   ===================================================== */
+const TEKST = {
+  bundVenstre: "LIFE BLUEPRINT STUDY",
+  bundHoejre:  "MENTORORDNING",
+  bagDa: "Kortet er personligt og gælder kun sammen med gyldig billedlegitimation.",
+  bagEn: "This card is personal and valid only with photo ID.",
+  fundetDa: "Fundet? Send en mail",
+  fundetEn: "Found? Please email",
+  email: "lifeblueprintstudy@gmail.com",
+  nrPrefix: "LB-"
+};
+
+const INF = "M200 100 C238 42 318 40 318 100 C318 160 238 158 200 100 C162 42 82 40 82 100 C82 160 162 158 200 100 Z";
+const QR = "M0 0h7v1h-7zM9 0h1v1h-1zM11 0h1v1h-1zM13 0h2v1h-2zM16 0h2v1h-2zM19 0h3v1h-3zM23 0h1v1h-1zM26 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM9 1h1v1h-1zM11 1h1v1h-1zM13 1h5v1h-5zM21 1h2v1h-2zM24 1h1v1h-1zM26 1h1v1h-1zM32 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM8 2h3v1h-3zM13 2h1v1h-1zM15 2h1v1h-1zM17 2h2v1h-2zM20 2h5v1h-5zM26 2h1v1h-1zM28 2h3v1h-3zM32 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM8 3h1v1h-1zM10 3h2v1h-2zM14 3h1v1h-1zM16 3h1v1h-1zM22 3h1v1h-1zM26 3h1v1h-1zM28 3h3v1h-3zM32 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM8 4h1v1h-1zM10 4h1v1h-1zM15 4h1v1h-1zM18 4h1v1h-1zM23 4h1v1h-1zM26 4h1v1h-1zM28 4h3v1h-3zM32 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h5v1h-5zM14 5h5v1h-5zM20 5h3v1h-3zM24 5h1v1h-1zM26 5h1v1h-1zM32 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h1v1h-1zM24 6h1v1h-1zM26 6h7v1h-7zM8 7h1v1h-1zM10 7h1v1h-1zM12 7h1v1h-1zM15 7h1v1h-1zM19 7h3v1h-3zM0 8h1v1h-1zM2 8h5v1h-5zM9 8h1v1h-1zM12 8h4v1h-4zM17 8h1v1h-1zM19 8h2v1h-2zM22 8h3v1h-3zM26 8h5v1h-5zM1 9h1v1h-1zM9 9h1v1h-1zM11 9h2v1h-2zM16 9h1v1h-1zM19 9h5v1h-5zM26 9h2v1h-2zM29 9h2v1h-2zM32 9h1v1h-1zM0 10h2v1h-2zM3 10h2v1h-2zM6 10h1v1h-1zM8 10h1v1h-1zM10 10h1v1h-1zM15 10h2v1h-2zM18 10h1v1h-1zM21 10h2v1h-2zM26 10h1v1h-1zM28 10h1v1h-1zM30 10h1v1h-1zM7 11h1v1h-1zM9 11h2v1h-2zM14 11h1v1h-1zM16 11h1v1h-1zM19 11h4v1h-4zM25 11h1v1h-1zM28 11h3v1h-3zM32 11h1v1h-1zM4 12h3v1h-3zM8 12h1v1h-1zM10 12h1v1h-1zM15 12h1v1h-1zM18 12h2v1h-2zM22 12h1v1h-1zM24 12h2v1h-2zM27 12h3v1h-3zM2 13h1v1h-1zM11 13h1v1h-1zM14 13h3v1h-3zM19 13h1v1h-1zM21 13h3v1h-3zM26 13h1v1h-1zM29 13h1v1h-1zM31 13h2v1h-2zM2 14h2v1h-2zM5 14h3v1h-3zM9 14h2v1h-2zM14 14h1v1h-1zM21 14h2v1h-2zM24 14h4v1h-4zM31 14h1v1h-1zM0 15h1v1h-1zM4 15h1v1h-1zM12 15h2v1h-2zM16 15h1v1h-1zM18 15h1v1h-1zM20 15h7v1h-7zM28 15h3v1h-3zM0 16h1v1h-1zM6 16h3v1h-3zM10 16h2v1h-2zM17 16h1v1h-1zM22 16h1v1h-1zM24 16h2v1h-2zM27 16h2v1h-2zM32 16h1v1h-1zM1 17h1v1h-1zM3 17h3v1h-3zM7 17h1v1h-1zM9 17h2v1h-2zM12 17h2v1h-2zM16 17h2v1h-2zM19 17h3v1h-3zM23 17h1v1h-1zM26 17h2v1h-2zM29 17h2v1h-2zM32 17h1v1h-1zM3 18h1v1h-1zM6 18h6v1h-6zM13 18h1v1h-1zM15 18h1v1h-1zM17 18h1v1h-1zM20 18h2v1h-2zM24 18h2v1h-2zM27 18h2v1h-2zM30 18h2v1h-2zM0 19h1v1h-1zM4 19h2v1h-2zM7 19h2v1h-2zM11 19h4v1h-4zM16 19h3v1h-3zM21 19h1v1h-1zM23 19h1v1h-1zM26 19h6v1h-6zM0 20h1v1h-1zM2 20h1v1h-1zM6 20h2v1h-2zM16 20h1v1h-1zM19 20h2v1h-2zM22 20h1v1h-1zM24 20h2v1h-2zM27 20h3v1h-3zM31 20h1v1h-1zM0 21h1v1h-1zM4 21h1v1h-1zM7 21h1v1h-1zM9 21h2v1h-2zM12 21h1v1h-1zM14 21h2v1h-2zM18 21h6v1h-6zM26 21h1v1h-1zM32 21h1v1h-1zM0 22h1v1h-1zM4 22h3v1h-3zM8 22h1v1h-1zM11 22h1v1h-1zM14 22h3v1h-3zM21 22h2v1h-2zM25 22h2v1h-2zM28 22h4v1h-4zM0 23h1v1h-1zM2 23h2v1h-2zM5 23h1v1h-1zM7 23h1v1h-1zM10 23h1v1h-1zM12 23h1v1h-1zM15 23h1v1h-1zM19 23h4v1h-4zM28 23h3v1h-3zM0 24h1v1h-1zM2 24h3v1h-3zM6 24h1v1h-1zM10 24h1v1h-1zM12 24h1v1h-1zM14 24h2v1h-2zM17 24h1v1h-1zM19 24h1v1h-1zM22 24h7v1h-7zM31 24h1v1h-1zM8 25h3v1h-3zM13 25h1v1h-1zM18 25h5v1h-5zM24 25h1v1h-1zM28 25h1v1h-1zM30 25h3v1h-3zM0 26h7v1h-7zM9 26h2v1h-2zM14 26h3v1h-3zM18 26h1v1h-1zM23 26h2v1h-2zM26 26h1v1h-1zM28 26h1v1h-1zM30 26h2v1h-2zM0 27h1v1h-1zM6 27h1v1h-1zM8 27h2v1h-2zM11 27h3v1h-3zM15 27h1v1h-1zM19 27h1v1h-1zM21 27h1v1h-1zM23 27h2v1h-2zM28 27h3v1h-3zM0 28h1v1h-1zM2 28h3v1h-3zM6 28h1v1h-1zM8 28h1v1h-1zM10 28h1v1h-1zM14 28h1v1h-1zM18 28h1v1h-1zM22 28h1v1h-1zM24 28h6v1h-6zM32 28h1v1h-1zM0 29h1v1h-1zM2 29h3v1h-3zM6 29h1v1h-1zM8 29h3v1h-3zM13 29h4v1h-4zM19 29h3v1h-3zM23 29h3v1h-3zM28 29h2v1h-2zM31 29h2v1h-2zM0 30h1v1h-1zM2 30h3v1h-3zM6 30h1v1h-1zM8 30h2v1h-2zM12 30h1v1h-1zM14 30h1v1h-1zM20 30h2v1h-2zM26 30h2v1h-2zM29 30h1v1h-1zM0 31h1v1h-1zM6 31h1v1h-1zM9 31h1v1h-1zM16 31h1v1h-1zM18 31h1v1h-1zM21 31h1v1h-1zM25 31h1v1h-1zM28 31h1v1h-1zM30 31h1v1h-1zM0 32h7v1h-7zM8 32h2v1h-2zM11 32h1v1h-1zM14 32h1v1h-1zM16 32h2v1h-2zM19 32h2v1h-2zM22 32h1v1h-1zM24 32h2v1h-2zM27 32h1v1h-1zM31 32h1v1h-1z";
+/* Logoets ring som ren kontur (ingen maske), så det også virker i PDF'en */
+const RING = "M200 75.73 L190.42 66.47 L182 59.86 L173.23 54.22 L163.77 49.34 L154.55 45.68 L148.83 43.92 L142.63 42.44 L133.34 41.08 L124.14 40.77 L115.11 41.58 L111.47 42.24 L106.34 43.55 L102.78 44.75 L97.95 46.78 L91.95 50.12 L87.69 53.16 L84.69 55.73 L80.99 59.51 L78.99 61.92 L74.96 67.91 L72.43 72.86 L71.13 76 L77.60 76 L80.49 70.34 L83.31 66.14 L85.40 63.58 L88.85 60.05 L91.32 57.94 L95.29 55.10 L98.04 53.48 L104.97 50.33 L110.57 48.61 L118.26 47.20 L126.66 46.75 L135.25 47.32 L143.96 48.87 L152.69 51.38 L161.36 54.84 L169.90 59.23 L178.22 64.54 L186.23 70.78 L191.91 76 L208.09 76 L216.40 68.60 L221.78 64.54 L227.29 60.90 L232.67 57.79 L238.38 54.96 L244.14 52.53 L249.94 50.53 L258.64 48.31 L267.29 47.05 L275.80 46.77 L284.08 47.52 L289.84 48.71 L295.03 50.33 L300 52.46 L304.71 55.10 L310.75 59.69 L314.95 63.99 L318 67.96 L319.51 70.34 L322.40 76 L328.87 76 L327.57 72.86 L325.04 67.91 L321.01 61.92 L319.01 59.51 L315.31 55.73 L312.31 53.16 L308.05 50.12 L302.05 46.78 L297.22 44.75 L293.66 43.55 L288.53 42.24 L284.89 41.58 L275.86 40.77 L266.66 41.08 L257.37 42.44 L248.08 44.82 L238.85 48.20 L232.77 50.99 L227.18 53.98 L218 59.86 L209.58 66.47 L204.53 71.08 L200 75.73 Z M71.17 124.12 L73.84 130.06 L75.41 132.86 L78.44 137.36 L82.48 142.11 L87.69 146.84 L92.66 150.33 L99.97 154.13 L106.34 156.45 L114.45 158.32 L118.10 158.82 L124.14 159.23 L129.69 159.17 L135.89 158.65 L145.73 156.88 L151.92 155.18 L158.09 153.04 L164.20 150.46 L170.24 147.45 L176.18 144.01 L181.62 140.41 L190.42 133.53 L195.47 128.92 L200 124.27 L207.21 131.43 L215.52 138.32 L224.22 144.25 L233.19 149.22 L242.37 153.21 L248.08 155.18 L254.27 156.88 L264.11 158.65 L273.40 159.25 L282.55 158.74 L287.85 157.90 L291.47 157.06 L296.51 155.51 L300.03 154.13 L304.73 151.85 L308.05 149.88 L312.31 146.84 L315.31 144.27 L319.01 140.49 L321.01 138.08 L325.04 132.09 L327.57 127.14 L328.87 124 L322.40 124 L319.51 129.66 L316.69 133.86 L314.60 136.42 L311.15 139.95 L308.68 142.06 L304.71 144.90 L301.96 146.52 L295.03 149.67 L289.43 151.39 L281.74 152.80 L273.34 153.25 L264.75 152.68 L256.04 151.13 L247.31 148.62 L238.64 145.16 L230.10 140.77 L221.78 135.46 L213.77 129.22 L208.09 124 L191.91 124 L183.60 131.40 L178.22 135.46 L172.71 139.10 L167.33 142.21 L161.62 145.04 L155.86 147.47 L150.06 149.47 L141.36 151.69 L132.71 152.95 L124.20 153.23 L115.92 152.48 L110.16 151.29 L104.97 149.67 L100 147.54 L95.29 144.90 L89.25 140.31 L85.05 136.01 L82 132.04 L80.49 129.66 L77.60 124 L71.17 124.12 Z M162.89 76 L156.36 72.39 L151.66 70.24 L146.97 68.45 L142.30 67.01 L137.70 65.93 L133.19 65.20 L128.80 64.81 L124.56 64.77 L120.51 65.06 L116.66 65.67 L113.04 66.60 L109.67 67.82 L106.56 69.33 L103.72 71.12 L101.14 73.20 L98.48 76 L107.22 76 L110.71 73.94 L114.81 72.33 L119.50 71.26 L124.74 70.77 L130.45 70.94 L136.53 71.82 L142.86 73.42 L149.86 76 L162.89 76 Z M98.48 124 L101.14 126.80 L103.72 128.88 L108.09 131.46 L111.33 132.83 L114.82 133.90 L118.56 134.67 L122.51 135.12 L126.66 135.25 L130.98 135.04 L135.43 134.48 L139.99 133.57 L144.63 132.31 L149.31 130.70 L154.01 128.73 L158.70 126.41 L162.89 124 L149.86 124 L145.01 125.88 L138.62 127.73 L132.44 128.85 L126.60 129.25 L121.19 128.98 L116.31 128.09 L112.01 126.65 L109.48 125.42 L107.22 124 L98.48 124 Z M237.11 124 L243.64 127.61 L248.34 129.76 L253.03 131.55 L257.70 132.99 L262.30 134.07 L266.81 134.80 L271.20 135.19 L275.44 135.23 L279.49 134.94 L283.34 134.33 L286.96 133.40 L290.33 132.18 L293.44 130.67 L296.28 128.88 L298.86 126.80 L301.52 124 L292.78 124 L289.29 126.06 L285.19 127.67 L280.50 128.74 L275.26 129.23 L269.55 129.06 L263.47 128.18 L257.14 126.58 L250.14 124 L237.11 124 Z M301.52 76 L298.86 73.20 L296.28 71.12 L291.91 68.54 L288.67 67.17 L285.18 66.10 L281.44 65.33 L277.49 64.88 L273.34 64.75 L269.02 64.96 L264.57 65.52 L260.01 66.43 L255.37 67.69 L250.69 69.30 L245.99 71.27 L241.30 73.59 L237.11 76 L250.14 76 L254.99 74.12 L261.38 72.27 L267.56 71.15 L273.40 70.75 L278.81 71.02 L283.69 71.91 L287.99 73.35 L290.52 74.58 L292.78 76 L301.52 76 Z";
+function logo(w, h, color){
+  return `<svg width="${w}" height="${h}" viewBox="0 0 400 200" role="img" aria-label="Life Blueprint logo"><path d="${RING}" fill="${color}" fill-rule="evenodd"/><text x="200" y="117" text-anchor="middle" textLength="364" lengthAdjust="spacingAndGlyphs" fill="${color}" style="font-family:Montserrat,sans-serif;font-weight:800;font-size:46px">LIFE BLUEPRINT</text></svg>`;
+}
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+function nameSize(n){ const l = (n||"").length; return l <= 22 ? 14 : l <= 27 ? 12 : l <= 32 ? 10.5 : 9; }
+
+function front(d, bleed){
+  const foto = d.foto
+    ? `<div class="photo has"><img src="${d.foto}" alt="" style="object-position:${d.fx}% ${d.fy}%;transform:scale(${d.fz/100});transform-origin:${d.fx}% ${d.fy}%"></div>`
+    : `<div class="photo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg><small>FOTO</small></div>`;
+  return `<div class="card front${bleed?" bleed":""}">
+    <div class="head">${logo(68,34,"#FFFBF2")}<div class="title"><b>STUDIEKORT</b><span>STUDENT CARD</span></div></div>
+    <div class="mid">${foto}
+      <div class="fields">
+        <div class="f"><i>NAVN · NAME</i><div class="name" style="font-size:${nameSize(d.navn)}px">${esc(d.navn) || "&nbsp;"}</div></div>
+        <div class="grid">
+          <div class="f"><i>STUDIENR. · STUDENT NO.</i><span>${esc(d.nr) || "&nbsp;"}</span></div>
+          <div class="f"><i>FØDT · BORN</i><span>${esc(d.foedt) || "&nbsp;"}</span></div>
+          <div class="f"><i>OPTAGET · ENROLLED</i><span>${esc(d.optaget) || "&nbsp;"}</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>${esc(TEKST.bundVenstre)}</span><svg width="16" height="8" viewBox="60 30 280 140" aria-hidden="true"><path d="${INF}" fill="none" stroke="#F2C26A" stroke-width="22"/></svg><span class="am">${esc(TEKST.bundHoejre)}</span></div>
+  </div>`;
+}
+function back(bleed){
+  return `<div class="card back${bleed?" bleed":""}">
+    <div class="stripe"></div>
+    <div class="body">
+      <div class="head">${logo(52,26,"#141815")}<div class="tag">STUDIEKORT · STUDENT CARD</div></div>
+      <div class="main">
+        <div class="txt">
+          <div><div class="da">${esc(TEKST.bagDa)}</div><div class="en">${esc(TEKST.bagEn)}</div></div>
+          <div><div class="sig"></div><div class="lbl">UNDERSKRIFT · SIGNATURE</div></div>
+        </div>
+        <div class="qr"><svg width="60" height="60" viewBox="-2 -2 37 37" role="img" aria-label="QR-kode til hjemmesiden" shape-rendering="crispEdges"><rect x="-2" y="-2" width="37" height="37" fill="#FFFFFF"/><path fill="#141815" d="${QR}"/></svg>SCAN · LÆS MERE</div>
+      </div>
+    </div>
+    <div class="found"><div><b>${esc(TEKST.fundetDa)}</b><em>${esc(TEKST.fundetEn)}</em></div><div class="mail">${esc(TEKST.email)}</div></div>
+  </div>`;
+}
+
+/* ---------- tilstand ---------- */
+const $ = id => document.getElementById(id);
+let cur = blank();
+function today(){ const d = new Date(); return [d.getDate(), d.getMonth()+1].map(n => String(n).padStart(2,"0")).join(".") + "." + d.getFullYear(); }
+function blank(){ return { id: null, navn:"", nr:"", foedt:"", optaget: today(), foto:"", fx:50, fy:35, fz:100 }; }
+
+function toForm(){
+  ["navn","nr","foedt","optaget"].forEach(k => $(k).value = cur[k] || "");
+  $("fx").value = cur.fx; $("fy").value = cur.fy; $("fz").value = cur.fz;
+  $("sliders").hidden = !cur.foto;
+  $("fotolabel").textContent = cur.foto ? "Skift foto" : "Vælg foto";
+  render();
+}
+function fromForm(){
+  ["navn","nr","foedt","optaget"].forEach(k => cur[k] = $(k).value.trim());
+  cur.fx = +$("fx").value; cur.fy = +$("fy").value; cur.fz = +$("fz").value;
+}
+function data(m){ return Object.assign({}, m); }
+function render(){
+  // Forhåndsvisningen viser kortet som det ser ud færdigskåret; PDF'en får altid 2 mm bleed.
+  $("pvFront").innerHTML = front(data(cur), false);
+  $("pvBack").innerHTML = back(false);
+}
+function alertBox(msg){ const n = $("framenote"); n.textContent = msg; n.classList.add("show"); }
+
+/* ---------- foto: skaleres ned til 600 px ---------- */
+$("foto").addEventListener("change", e => {
+  const file = e.target.files[0]; if (!file) return;
+  const img = new Image();
+  img.onload = () => {
+    const max = 600, s = Math.min(1, max / Math.max(img.width, img.height));
+    const c = document.createElement("canvas"); c.width = Math.round(img.width*s); c.height = Math.round(img.height*s);
+    c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+    cur.foto = c.toDataURL("image/jpeg", 0.88); URL.revokeObjectURL(img.src);
+    cur.fx = 50; cur.fy = 35; cur.fz = 100; toForm();
+  };
+  img.src = URL.createObjectURL(file); e.target.value = "";
+});
+
+$("f").addEventListener("input", e => { if (e.target.type !== "file") { fromForm(); render(); } });
+$("f").addEventListener("submit", e => e.preventDefault());
+$("new").onclick = () => { cur = blank(); toForm(); $("navn").focus(); };
+
+function doPrint(members){
+  // Altid trykklar: 85,6 × 53,98 mm + 2 mm bleed hele vejen rundt
+  document.getElementById("pagesize").textContent = "@page{size:89.6mm 57.98mm;margin:0}";
+  $("print").innerHTML = members.map(m => front(data(m), true) + back(true)).join("");
+  const name = members.length === 1 ? (members[0].navn || "studiekort") : "studiekort-alle";
+  const old = document.title; document.title = "Studiekort – " + name;
+  document.fonts.ready.then(() => {
+    try { window.print(); } catch(err) { alertBox("Udskrift er blokeret her. Åbn siden på hjemmesiden for at gemme som PDF."); }
+    document.title = old;
+  });
+}
+$("print1").onclick = async () => {
+  fromForm(); sendErr("");
+  const btn = $("print1"), label = btn.textContent;
+  btn.disabled = true; btn.textContent = "Henter studienr. …";
+  try { await ensureNr(); doPrint([cur]); }
+  catch (err) { sendErr(NR_FEJL); }
+  finally { btn.disabled = false; btn.textContent = label; }
+};
+
+/* ---------- Indmeld: trykklar PDF sendes som vedhæftet fil ---------- */
+const LIBS = [
+  "https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.js",
+  "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+];
+function loadScript(src){
+  return new Promise((ok, bad) => {
+    if (document.querySelector(`script[src="${src}"]`)) return ok();
+    const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = () => bad(new Error("script")); document.head.appendChild(s);
+  });
+}
+async function makePdf(d){
+  await Promise.all(LIBS.map(loadScript));
+  const stage = $("stage");
+  stage.innerHTML = front(d, true) + back(true);
+  await document.fonts.ready;
+  await Promise.all([...stage.querySelectorAll("img")].map(i => i.decode ? i.decode().catch(() => {}) : null));
+  const W = 89.6, H = 57.98;  // 85,6 × 53,98 mm + 2 mm bleed
+  const pdf = new window.jspdf.jsPDF({ unit: "mm", format: [W, H], orientation: "landscape", compress: true });
+  const cards = [...stage.children];
+  for (let i = 0; i < cards.length; i++) {
+    const url = await htmlToImage.toJpeg(cards[i], { quality: 0.93, pixelRatio: 600 / 96, backgroundColor: "#FFFFFF" });
+    if (i) pdf.addPage([W, H], "landscape");
+    pdf.addImage(url, "JPEG", 0, 0, W, H, undefined, "FAST");
+  }
+  pdf.setProperties({ title: "Studiekort – " + d.navn, subject: "85,6 × 53,98 mm + 2 mm bleed, 600 dpi" });
+  stage.innerHTML = "";
+  return pdf.output("blob");
+}
+/* ---------- studienummer: hentes fra Google-arket, så det aldrig gentages ---------- */
+function randomNr(){
+  const a = new Uint32Array(2); crypto.getRandomValues(a);
+  return TEKST.nrPrefix + String(a[0] % 10000).padStart(4, "0") + "-" + String(a[1] % 1000).padStart(3, "0");
+}
+async function ensureNr(){
+  if (cur.nr) return cur.nr;
+  if (!NUMMER_URL) {
+    cur.nr = randomNr();
+  } else {
+    const r = await fetch(NUMMER_URL, { method: "POST", body: JSON.stringify({ navn: cur.navn }) });
+    const j = await r.json();
+    if (!j.ok || !/^LB-\d{4}-\d{3}$/.test(j.nr || "")) throw new Error("nr");
+    cur.nr = j.nr;
+  }
+  $("nr").value = cur.nr; render();
+  return cur.nr;
+}
+const NR_FEJL = "Kunne ikke hente et studienummer. Tjek internetforbindelsen og prøv igen.";
+
+function sendErr(msg){ const e = $("senderr"); e.textContent = msg; e.hidden = !msg; }
+$("send").onclick = async () => {
+  fromForm(); sendErr(""); $("sentnote").classList.remove("show");
+  const d = data(cur), mail = $("mail").value.trim();
+  if (!d.navn) { sendErr("Skriv dit navn, før kortet sendes."); $("navn").focus(); return; }
+  if (!d.foto) { sendErr("Tilføj et foto, før kortet sendes."); return; }
+  if (mail && !/^\S+@\S+\.\S+$/.test(mail)) { sendErr("Skriv en e-mailadresse som navn@eksempel.dk."); $("mail").focus(); return; }
+  const btn = $("send"), label = btn.textContent;
+  btn.disabled = true; btn.textContent = "Henter studienr. …";
+  try {
+    try { await ensureNr(); } catch (err) { throw new Error("nr"); }
+    d.nr = cur.nr;
+    btn.textContent = "Laver PDF …";
+    let blob;
+    try { blob = await makePdf(d); } catch (err) { console.error(err); throw new Error("pdf"); }
+    if (blob.size > 9.5e6) throw new Error("size");
+    if (NUMMER_URL) {
+      // Send via jeres eget Google-script (mail fra lifeblueprintstudy@gmail.com med PDF vedhæftet)
+      btn.textContent = "Sender …";
+      const pdf = await new Promise((ok, bad) => { const r = new FileReader(); r.onload = () => ok(String(r.result).split(",")[1]); r.onerror = bad; r.readAsDataURL(blob); });
+      let j;
+      try {
+        const res = await fetch(NUMMER_URL, { method: "POST", body: JSON.stringify({ action: "send", navn: d.navn, nr: d.nr, foedt: d.foedt || "", optaget: d.optaget || "", email: mail, pdf }) });
+        j = await res.json();
+      } catch (err) { console.error(err); throw new Error("net"); }
+      if (!j.ok) { const e = new Error("google"); e.detail = j.fejl || "ukendt fejl"; throw e; }
+      if (j.nr !== d.nr) throw new Error("oldscript");
+      $("sentnote").classList.add("show");
+      $("sentnote").scrollIntoView({ behavior: "smooth", block: "center" });
+      btn.disabled = false; btn.textContent = label;
+      return;
+    }
+    // Reserve: FormSubmit (bruges kun hvis NUMMER_URL er tom)
+    const slug = d.navn.toLowerCase().normalize("NFKD").replace(/[^a-z0-9æøå]+/g, "-").replace(/^-|-$/g, "") || "studiekort";
+    const dt = new DataTransfer();
+    dt.items.add(new File([blob], `studiekort-${slug}.pdf`, { type: "application/pdf" }));
+    const f = $("sendForm");
+    f.attachment.files = dt.files;
+    f._subject.value = "Nyt studiekort: " + d.navn;
+    f._next.value = new URL("studiekort.html?sendt=1", location.href).href;
+    f["Navn"].value = d.navn; f["Studienr."].value = d.nr || ""; f["Født"].value = d.foedt || ""; f["Optaget"].value = d.optaget || "";
+    f.email.value = mail;
+    btn.textContent = "Sender …";
+    f.submit();
+  } catch (err) {
+    const FEJL = {
+      size: "PDF'en blev for stor. Prøv med et mindre foto.",
+      nr: NR_FEJL,
+      pdf: "PDF'en kunne ikke laves i browseren. Prøv at genindlæse siden, eller brug en anden browser (f.eks. Chrome).",
+      net: "Kortet kunne ikke sendes – ingen forbindelse til Google-scriptet. Tjek internetforbindelsen og prøv igen.",
+      google: "Google-scriptet afviste afsendelsen: " + (err.detail || ""),
+      oldscript: "Google-scriptet kører en gammel version uden mail. I Apps Script: Deploy → Manage deployments → blyant → Version: New version → Deploy."
+    };
+    sendErr(FEJL[err.message] || "Kortet kunne ikke sendes. Tjek din internetforbindelse og prøv igen.");
+    btn.disabled = false; btn.textContent = label;
+  }
+};
+window.addEventListener("pageshow", () => { $("send").disabled = false; $("send").textContent = "Indmeld og send kort"; });
+
+/* ---------- udfyld fra link: studiekort.html?navn=...&nr=...&foedt=...&optaget=... ---------- */
+try {
+  const p = new URLSearchParams(location.search);
+  ["navn","nr","foedt","optaget"].forEach(k => { if (p.get(k)) cur[k] = p.get(k); });
+} catch(e) {}
+if (window.self !== window.top) $("framenote").classList.add("show");
+if (/[?&]sendt=1/.test(location.search)) $("sentnote").classList.add("show");
+toForm();
+</script>
+</body>
+</html>
